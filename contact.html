@@ -73,13 +73,13 @@
     .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
     .submit-btn {
       font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: var(--body-font-l);
+      font-size: var(--body-font-m);
       font-weight: 600;
       background: var(--color-black);
       color: white;
       border: none;
       border-radius: 100px;
-      padding: 0.9rem 2.4rem;
+      padding: 0.65rem 1.5rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -90,6 +90,26 @@
     .submit-btn:active { transform: translateY(0); }
     .success-msg { display: none; padding: 1rem 1.5rem; background: #e8faf0; border: 1px solid var(--color-green); border-radius: 10px; color: #0a5c2f; font-size: var(--body-font-m); font-weight: 500; }
     .success-msg.show { display: block; }
+    .contact-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-lightgrey);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      --display-font-s: 1.2rem;
+      --display-font-m: 1.75rem;
+      --body-font-l: 0.95rem;
+      --body-font-m: 0.85rem;
+      --body-font-s: 0.78rem;
+      --body-font-xs: 0.7rem;
+      --space-m: 0.75rem;
+    }
+    .contact-card-dark {
+      background: var(--color-black);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
     footer { border-top: 1px solid var(--color-lightgrey); padding: var(--space-l) var(--layout-padding); }
     .footer-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .footer-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
@@ -156,45 +176,45 @@
 
 <!-- CONTACT GRID -->
 <section style="padding: 0 var(--layout-padding) var(--space-4xl);">
-  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-l);" class="contact-grid">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="contact-grid">
 
     <!-- Calendly card -->
-    <div style="background: var(--color-black); border-radius: 16px; padding: var(--space-l); display: flex; flex-direction: column; gap: var(--space-m);">
+    <div class="contact-card">
       <div>
-        <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">
+        <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
           <span class="nl">Gratis gesprek</span>
           <span class="en">Free call</span>
         </p>
-        <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: white; line-height: 1.1;">
+        <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1;">
           <span class="nl">Gratis gesprek</span>
           <span class="en">Free call</span>
         </h2>
       </div>
-      <p style="font-size: var(--body-font-l); color: var(--color-grey); line-height: 1.65; flex: 1;">
+      <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.65;">
         <span class="nl">De snelste manier om te starten. We bespreken wat tijd kost, wat het kost en wat AI voor jou zou kunnen betekenen.</span>
         <span class="en">The fastest way to get started. We discuss what's eating your time, what it costs, and what AI could do for you.</span>
       </p>
-      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="width: 8px; height: 8px; background: var(--color-green); border-radius: 50%; flex-shrink: 0;"></span>
-          <span style="font-size: var(--body-font-m); color: rgba(255,255,255,0.7);">
+      <div style="border-top: 1px solid var(--color-lightgrey); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.65rem;">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <span style="width: 10px; height: 10px; background: var(--color-blue); transform: rotate(45deg); border-radius: 2px; flex-shrink: 0; opacity: 0.85;"></span>
+          <span style="font-size: 0.85rem; color: var(--color-black);">
             <span class="nl">30 minuten</span><span class="en">30 minutes</span>
           </span>
         </div>
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="width: 8px; height: 8px; background: var(--color-green); border-radius: 50%; flex-shrink: 0;"></span>
-          <span style="font-size: var(--body-font-m); color: rgba(255,255,255,0.7);">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <span style="width: 10px; height: 10px; background: var(--color-blue); transform: rotate(45deg); border-radius: 2px; flex-shrink: 0; opacity: 0.85;"></span>
+          <span style="font-size: 0.85rem; color: var(--color-black);">
             <span class="nl">Gratis, geen verplichtingen</span><span class="en">Free, no obligations</span>
           </span>
         </div>
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="width: 8px; height: 8px; background: var(--color-green); border-radius: 50%; flex-shrink: 0;"></span>
-          <span style="font-size: var(--body-font-m); color: rgba(255,255,255,0.7);">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <span style="width: 10px; height: 10px; background: var(--color-blue); transform: rotate(45deg); border-radius: 2px; flex-shrink: 0; opacity: 0.85;"></span>
+          <span style="font-size: 0.85rem; color: var(--color-black);">
             <span class="nl">Video of telefonisch</span><span class="en">Video or phone</span>
           </span>
         </div>
       </div>
-      <a href="#" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: var(--color-green); color: var(--color-black); border: none; border-radius: 100px; padding: 0.9rem 2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; align-self: flex-start;">
+      <a href="#" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 600; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.65rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s; align-self: flex-start;">
         <span class="nl">Plan via Calendly</span>
         <span class="en">Book via Calendly</span>
         →
@@ -202,16 +222,18 @@
     </div>
 
     <!-- Contact form -->
-    <div style="background: #f6f7fb; border-radius: 16px; padding: var(--space-l);">
-      <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">
-        <span class="nl">Direct contact</span>
-        <span class="en">Direct contact</span>
-      </p>
-      <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1; margin-bottom: var(--space-m);">
-        <span class="nl">Direct contact</span>
-        <span class="en">Direct contact</span>
-      </h2>
-      <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65; margin-bottom: var(--space-m);">
+    <div class="contact-card">
+      <div>
+        <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+          <span class="nl">Direct contact</span>
+          <span class="en">Direct contact</span>
+        </p>
+        <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1;">
+          <span class="nl">Direct contact</span>
+          <span class="en">Direct contact</span>
+        </h2>
+      </div>
+      <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.65;">
         <span class="nl">Liever eerst een berichtje sturen? Dat kan ook.</span>
         <span class="en">Prefer to send a message first? That works too.</span>
       </p>
