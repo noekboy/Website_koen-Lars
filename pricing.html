@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prijzen — Koen &amp; Lars</title>
+  <meta name="description" content="Transparante prijzen. Geen verrassingen. Elk traject heeft een vaste prijs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-blue: #004dce;
+      --color-white: #fefefe;
+      --color-green: #4ef992;
+      --color-black: #120e20;
+      --color-darkgrey: #69647c;
+      --color-grey: #928ea3;
+      --color-lightgrey: #e6e6ec;
+      --ft-b-100: clamp(1.125rem, 1.294498vw + 0.8216rem, 2.375rem);
+      --display-font-xl: calc(var(--ft-b-100) * 3.8);
+      --display-font-l: calc(var(--ft-b-100) * 2.5);
+      --display-font-m: calc(var(--ft-b-100) * 2);
+      --display-font-s: calc(var(--ft-b-100) * 1.5);
+      --body-font-l: var(--ft-b-100);
+      --body-font-m: calc(var(--body-font-l) * 0.75);
+      --body-font-s: calc(var(--body-font-l) * 0.62);
+      --body-font-xs: calc(var(--body-font-l) * 0.56);
+      --space-4xl: calc(var(--display-font-xl) * 1.2);
+      --space-3xl: calc(var(--display-font-xl) * 1);
+      --space-2xl: calc(var(--display-font-xl) * 0.8);
+      --space-xl: calc(var(--display-font-xl) * 0.6);
+      --space-l: calc(var(--display-font-xl) * 0.4);
+      --space-m: calc(var(--display-font-xl) * 0.3);
+      --space-s: calc(var(--display-font-xl) * 0.1);
+      --layout-padding: var(--space-l);
+      --max-content-width: 1920px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-white); font-family: 'Bricolage Grotesque', sans-serif; color: var(--color-black); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .lang-en .nl { display: none !important; }
+    .lang-en .en { display: inline !important; }
+    .en { display: none; }
+    .nl { display: inline; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-lightgrey); padding: 0 var(--layout-padding); }
+    .nav-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 2rem; }
+    .nav-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: var(--body-font-m); color: var(--color-darkgrey); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-black); font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .lang-btn { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-s); font-weight: 500; color: var(--color-darkgrey); background: none; border: 1px solid var(--color-lightgrey); border-radius: 100px; padding: 0.25rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+    .lang-btn:hover { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+    .btn-primary { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.6rem 1.4rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; white-space: nowrap; }
+    .btn-primary:hover { background: var(--color-blue); }
+    .section-tag { font-size: var(--body-font-xs); font-weight: 500; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .section-tag::after { content: ''; display: block; height: 1px; width: 2rem; background: currentColor; }
+    .pricing-card { background: var(--color-white); border: 1px solid var(--color-lightgrey); border-radius: 20px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.2s; /* scope card-internal font sizes to fixed values so they don't blow up at wide viewports */ --display-font-s: 1.2rem; --display-font-m: 1.75rem; }
+    .pricing-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px -8px rgba(0, 77, 206, 0.15); border-color: var(--color-blue); }
+    .pricing-card:hover .card-deco-img { transform: scale(1.1) rotate(-4deg); }
+    .card-deco-img { width: 64px; height: 64px; object-fit: contain; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); flex-shrink: 0; user-select: none; pointer-events: none; }
+    .price-amount { font-size: var(--display-font-m); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--color-black); }
+    .price-label { font-size: 0.75rem; color: var(--color-grey); margin-top: 0.3rem; }
+    .card-features { border-top: 1px solid var(--color-lightgrey); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    .card-features.blue-border { border-top-color: rgba(0,77,206,0.2); }
+    .feature-item { display: flex; align-items: center; gap: 0.65rem; font-size: 0.85rem; color: var(--color-black); }
+    .feature-icon { width: 10px; height: 10px; background: var(--color-blue); transform: rotate(45deg); flex-shrink: 0; border-radius: 2px; opacity: 0.85; }
+    .faq-item { border-bottom: 1px solid var(--color-lightgrey); padding: var(--space-m) 0; cursor: pointer; }
+    .faq-item:first-child { border-top: 1px solid var(--color-lightgrey); }
+    .faq-q { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-a { font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65; margin-top: 0.75rem; display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { font-size: 1.5rem; color: var(--color-grey); transition: transform 0.2s; flex-shrink: 0; }
+    footer { border-top: 1px solid var(--color-lightgrey); padding: var(--space-l) var(--layout-padding); }
+    .footer-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .footer-meta { font-size: var(--body-font-s); color: var(--color-grey); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { font-size: var(--body-font-s); color: var(--color-darkgrey); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--color-black); }
+    @media (max-width: 768px) {
+      :root {
+        --display-font-xl: 2.75rem;
+        --display-font-l: 2rem;
+        --display-font-m: 1.65rem;
+        --display-font-s: 1.3rem;
+        --layout-padding: 1.25rem;
+      }
+      .nav-links { display: none; }
+      .pricing-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      :root {
+        --display-font-xl: 2.25rem;
+        --display-font-l: 1.75rem;
+        --display-font-m: 1.5rem;
+        --display-font-s: 1.2rem;
+        --layout-padding: 1rem;
+      }
+      .nav-right { gap: 0.5rem; }
+      .btn-primary { padding: 0.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Koen &amp; Lars</a>
+    <ul class="nav-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html" class="active"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-toggle">EN</button>
+      <a href="contact.html" class="btn-primary">
+        <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding: var(--space-3xl) var(--layout-padding) var(--space-2xl); max-width: var(--max-content-width); margin: 0 auto;">
+  <p class="section-tag"><span class="nl">Prijzen</span><span class="en">Pricing</span></p>
+  <h1 style="font-size: var(--display-font-xl); font-weight: 700; letter-spacing: -0.03em; line-height: 1.0; max-width: 18ch;">
+    <span class="nl">Transparante prijzen. Geen verrassingen.</span>
+    <span class="en">Transparent pricing. No surprises.</span>
+  </h1>
+  <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.6; max-width: 52ch; margin-top: var(--space-m);">
+    <span class="nl">Elk traject heeft een vaste prijs. Je weet wat je krijgt voordat je ja zegt.</span>
+    <span class="en">Every project has a fixed price. You know what you're getting before you say yes.</span>
+  </p>
+</section>
+
+<!-- PRICING CARDS -->
+<section style="padding: 0 var(--layout-padding) var(--space-4xl);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;" class="pricing-grid">
+
+      <!-- Card 01: Training & Onboarding -->
+      <div class="pricing-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+          <div>
+            <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">01</p>
+            <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1;">Training &amp; Onboarding</h2>
+          </div>
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-gyoxLFpXzRRzVsgPJOKvB2r4tvzpcy.png&w=320&q=75" alt="" class="card-deco-img">
+        </div>
+        <div>
+          <p class="price-amount">€99</p>
+          <p class="price-label">
+            <span class="nl">vanaf per sessie</span>
+            <span class="en">starting from per session</span>
+          </p>
+        </div>
+        <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65; flex: 1;">
+          <span class="nl">Voor teams die AI écht willen gaan gebruiken in hun dagelijkse werk.</span>
+          <span class="en">For teams who want to actually use AI in their daily work.</span>
+        </p>
+        <div class="card-features">
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            <span class="nl">1-op-1 sessies voor ondernemers</span>
+            <span class="en">1-on-1 owner sessions</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            <span class="nl">Teamworkshops</span>
+            <span class="en">Team workshops</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            <span class="nl">Maandelijkse support</span>
+            <span class="en">Monthly support</span>
+          </div>
+        </div>
+        <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: white; border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; align-self: flex-start; margin-top: auto;">
+          <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
+        </a>
+      </div>
+
+      <!-- Card 02: Workflow Automatisering (featured) -->
+      <div class="pricing-card" style="border-color: var(--color-blue); background: #f0f5ff;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+          <div>
+            <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">02</p>
+            <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1;">
+              <span class="nl">Workflow Automatisering</span>
+              <span class="en">Workflow Automation</span>
+            </h2>
+          </div>
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-v98BP3EQdx0Yd0NkjHPnWx33WvzwGP.png&w=320&q=75" alt="" class="card-deco-img">
+        </div>
+        <div>
+          <p class="price-amount" style="color: var(--color-blue);">€299</p>
+          <p class="price-label">
+            <span class="nl">vanaf per automatisering</span>
+            <span class="en">starting from per automation</span>
+          </p>
+        </div>
+        <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65; flex: 1;">
+          <span class="nl">Voor bedrijven die te veel tijd kwijt zijn aan herhaalde taken.</span>
+          <span class="en">For businesses wasting too much time on repetitive tasks.</span>
+        </p>
+        <div class="card-features blue-border">
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            n8n · Make.com
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            <span class="nl">AI API-koppelingen</span>
+            <span class="en">AI API integrations</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            <span class="nl">Volledig gedocumenteerd</span>
+            <span class="en">Fully documented</span>
+          </div>
+        </div>
+        <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-blue); color: white; border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s; align-self: flex-start; margin-top: auto;">
+          <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
+        </a>
+      </div>
+
+      <!-- Card 03: Maatwerk AI-tools -->
+      <div class="pricing-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+          <div>
+            <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">03</p>
+            <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1;">
+              <span class="nl">Maatwerk AI-tools</span>
+              <span class="en">Custom AI Tools</span>
+            </h2>
+          </div>
+          <img src="https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-gyoxLFpXzRRzVsgPJOKvB2r4tvzpcy.png&w=320&q=75" alt="" class="card-deco-img" style="filter: hue-rotate(200deg) saturate(0.8);">
+        </div>
+        <div>
+          <p class="price-amount">€500</p>
+          <p class="price-label">
+            <span class="nl">vanaf per tool</span>
+            <span class="en">starting from per tool</span>
+          </p>
+        </div>
+        <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65; flex: 1;">
+          <span class="nl">Voor bedrijven die iets nodig hebben dat nog niet bestaat.</span>
+          <span class="en">For businesses that need something that doesn't exist yet.</span>
+        </p>
+        <div class="card-features">
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            Claude Code · Anthropic API
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"></span>
+            <span class="nl">Lokale implementatie</span>
+            <span class="en">Local deployment</span>
+          </div>
+        </div>
+        <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: white; border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; align-self: flex-start; margin-top: auto;">
+          <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RETAINER -->
+<section style="background: var(--color-black); padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl);" class="pricing-grid">
+    <div>
+      <p style="font-size: var(--body-font-xs); font-weight: 500; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <span class="nl">Doorlopende ondersteuning</span>
+        <span class="en">Ongoing support</span>
+        <span style="display: block; height: 1px; width: 2rem; background: currentColor;"></span>
+      </p>
+      <h2 style="font-size: var(--display-font-m); font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1.05;">
+        <span class="nl">Doorlopende ondersteuning</span>
+        <span class="en">Ongoing support</span>
+      </h2>
+    </div>
+    <div>
+      <p style="font-size: var(--body-font-l); color: var(--color-grey); line-height: 1.7;">
+        <span class="nl">Na elk project kun je kiezen voor maandelijkse ondersteuning. Geen lock-in — je betaalt alleen voor de maanden dat je het nodig hebt.</span>
+        <span class="en">After every project you can opt into monthly support. No lock-in — you only pay for the months you need it.</span>
+      </p>
+      <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: transparent; color: var(--color-green); border: 1px solid var(--color-green); border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s; margin-top: var(--space-m);">
+        <span class="nl">Meer informatie</span><span class="en">Learn more</span> →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <p class="section-tag">FAQ</p>
+    <h2 style="font-size: var(--display-font-l); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: var(--space-2xl);">
+      <span class="nl">Veelgestelde vragen</span>
+      <span class="en">Frequently asked questions</span>
+    </h2>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="nl">Waarom zijn jullie goedkoper dan andere AI-bedrijven?</span>
+        <span class="en">Why are you cheaper than other AI firms?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <span class="nl">Wij richten ons specifiek op kleine bedrijven. Geen grote overhead, geen accountmanagers — alleen Koen en Lars die het werk doen.</span>
+        <span class="en">We focus specifically on small businesses. No big overhead, no account managers — just Koen and Lars doing the work.</span>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="nl">Zijn de prijzen echt vast?</span>
+        <span class="en">Are prices really fixed?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <span class="nl">Ja. We sturen een voorstel met een vaste prijs voordat we beginnen. Geen verrassingen achteraf.</span>
+        <span class="en">Yes. We send a fixed-price proposal before we start. No surprises afterward.</span>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="nl">Wat als ik niet weet wat ik nodig heb?</span>
+        <span class="en">What if I don't know what I need?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <span class="nl">Dat is precies waarom we beginnen met een gratis gesprek. We helpen je uitzoeken wat het meeste oplevert.</span>
+        <span class="en">That's exactly why we start with a free call. We help you figure out what will make the biggest difference.</span>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="nl">Werken jullie ook buiten Drenthe?</span>
+        <span class="en">Do you work outside Drenthe?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <span class="nl">Ja — we werken door heel Nederland, en sommige diensten leveren we volledig op afstand.</span>
+        <span class="en">Yes — we work across the Netherlands, and some services are delivered fully remotely.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div style="background: var(--color-blue); padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-l); flex-wrap: wrap;">
+    <div>
+      <h2 style="font-size: var(--display-font-l); font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1.05;">
+        <span class="nl">Klaar om te beginnen?</span>
+        <span class="en">Ready to get started?</span>
+      </h2>
+      <p style="font-size: var(--body-font-l); color: rgba(255,255,255,0.7); margin-top: var(--space-s); max-width: 44ch;">
+        <span class="nl">Plan een gratis gesprek van 30 minuten. Geen verplichtingen, geen jargon.</span>
+        <span class="en">Book a free 30-minute call. No obligations, no jargon.</span>
+      </p>
+    </div>
+    <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: white; color: var(--color-blue); border: none; border-radius: 100px; padding: 1rem 2.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; transition: all 0.2s;">
+      <span class="nl">Plan een gratis gesprek</span>
+      <span class="en">Book a free call</span> →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Koen &amp; Lars</a>
+    <p class="footer-meta"><span class="nl">AI Integratie Specialisten · Nederland</span><span class="en">AI Integration Specialists · Netherlands</span> · contact@koenenlars.nl</p>
+    <ul class="footer-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  const toggle = document.getElementById('lang-toggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('lang-en');
+    const isEN = document.body.classList.contains('lang-en');
+    document.documentElement.lang = isEN ? 'en' : 'nl';
+    toggle.textContent = isEN ? 'NL' : 'EN';
+  });
+</script>
+</body>
+</html>

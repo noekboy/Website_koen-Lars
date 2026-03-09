@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Koen &amp; Lars</title>
+  <meta name="description" content="Plan een gratis gesprek van 30 minuten. Geen verplichtingen, geen jargon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-blue: #004dce;
+      --color-white: #fefefe;
+      --color-green: #4ef992;
+      --color-black: #120e20;
+      --color-darkgrey: #69647c;
+      --color-grey: #928ea3;
+      --color-lightgrey: #e6e6ec;
+      --ft-b-100: clamp(1.125rem, 1.294498vw + 0.8216rem, 2.375rem);
+      --display-font-xl: calc(var(--ft-b-100) * 3.8);
+      --display-font-l: calc(var(--ft-b-100) * 2.5);
+      --display-font-m: calc(var(--ft-b-100) * 2);
+      --display-font-s: calc(var(--ft-b-100) * 1.5);
+      --body-font-l: var(--ft-b-100);
+      --body-font-m: calc(var(--body-font-l) * 0.75);
+      --body-font-s: calc(var(--body-font-l) * 0.62);
+      --body-font-xs: calc(var(--body-font-l) * 0.56);
+      --space-4xl: calc(var(--display-font-xl) * 1.2);
+      --space-3xl: calc(var(--display-font-xl) * 1);
+      --space-2xl: calc(var(--display-font-xl) * 0.8);
+      --space-xl: calc(var(--display-font-xl) * 0.6);
+      --space-l: calc(var(--display-font-xl) * 0.4);
+      --space-m: calc(var(--display-font-xl) * 0.3);
+      --space-s: calc(var(--display-font-xl) * 0.1);
+      --layout-padding: var(--space-l);
+      --max-content-width: 1920px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-white); font-family: 'Bricolage Grotesque', sans-serif; color: var(--color-black); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .lang-en .nl { display: none !important; }
+    .lang-en .en { display: inline !important; }
+    .en { display: none; }
+    .nl { display: inline; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-lightgrey); padding: 0 var(--layout-padding); }
+    .nav-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 2rem; }
+    .nav-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: var(--body-font-m); color: var(--color-darkgrey); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-black); font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .lang-btn { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-s); font-weight: 500; color: var(--color-darkgrey); background: none; border: 1px solid var(--color-lightgrey); border-radius: 100px; padding: 0.25rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+    .lang-btn:hover { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+    .btn-primary { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.6rem 1.4rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; white-space: nowrap; }
+    .btn-primary:hover { background: var(--color-blue); }
+    .section-tag { font-size: var(--body-font-xs); font-weight: 500; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .section-tag::after { content: ''; display: block; height: 1px; width: 2rem; background: currentColor; }
+    input, textarea, select {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-m);
+      color: var(--color-black);
+      background: var(--color-white);
+      border: 1px solid var(--color-lightgrey);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    input:focus, textarea:focus { border-color: var(--color-blue); }
+    label { font-size: var(--body-font-s); font-weight: 500; color: var(--color-darkgrey); margin-bottom: 0.4rem; display: block; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .submit-btn {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-l);
+      font-weight: 600;
+      background: var(--color-black);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      padding: 0.9rem 2.4rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .submit-btn:hover { background: var(--color-blue); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .success-msg { display: none; padding: 1rem 1.5rem; background: #e8faf0; border: 1px solid var(--color-green); border-radius: 10px; color: #0a5c2f; font-size: var(--body-font-m); font-weight: 500; }
+    .success-msg.show { display: block; }
+    footer { border-top: 1px solid var(--color-lightgrey); padding: var(--space-l) var(--layout-padding); }
+    .footer-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .footer-meta { font-size: var(--body-font-s); color: var(--color-grey); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { font-size: var(--body-font-s); color: var(--color-darkgrey); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--color-black); }
+    @media (max-width: 768px) {
+      :root {
+        --display-font-xl: 2.75rem;
+        --display-font-l: 2rem;
+        --display-font-m: 1.65rem;
+        --display-font-s: 1.3rem;
+        --layout-padding: 1.25rem;
+      }
+      .nav-links { display: none; }
+      .contact-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      :root {
+        --display-font-xl: 2.25rem;
+        --display-font-l: 1.75rem;
+        --display-font-m: 1.5rem;
+        --display-font-s: 1.2rem;
+        --layout-padding: 1rem;
+      }
+      .nav-right { gap: 0.5rem; }
+      .btn-primary { padding: 0.5rem 1rem; }
+      .form-row { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Koen &amp; Lars</a>
+    <ul class="nav-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html" class="active"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-toggle">EN</button>
+      <a href="contact.html" class="btn-primary">
+        <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding: var(--space-3xl) var(--layout-padding) var(--space-2xl); max-width: var(--max-content-width); margin: 0 auto;">
+  <p class="section-tag"><span class="nl">Contact</span><span class="en">Contact</span></p>
+  <h1 style="font-size: var(--display-font-xl); font-weight: 700; letter-spacing: -0.03em; line-height: 1.0;">
+    <span class="nl">Laten we kennismaken.</span>
+    <span class="en">Let's get acquainted.</span>
+  </h1>
+  <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.6; max-width: 52ch; margin-top: var(--space-m);">
+    <span class="nl">Plan een gratis gesprek van 30 minuten. Geen verplichtingen, geen jargon — gewoon uitzoeken of we iets voor je kunnen betekenen.</span>
+    <span class="en">Book a free 30-minute call. No obligations, no jargon — just figuring out if we can help.</span>
+  </p>
+</section>
+
+<!-- CONTACT GRID -->
+<section style="padding: 0 var(--layout-padding) var(--space-4xl);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-l);" class="contact-grid">
+
+    <!-- Calendly card -->
+    <div style="background: var(--color-black); border-radius: 16px; padding: var(--space-l); display: flex; flex-direction: column; gap: var(--space-m);">
+      <div>
+        <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">
+          <span class="nl">Gratis gesprek</span>
+          <span class="en">Free call</span>
+        </p>
+        <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: white; line-height: 1.1;">
+          <span class="nl">Gratis gesprek</span>
+          <span class="en">Free call</span>
+        </h2>
+      </div>
+      <p style="font-size: var(--body-font-l); color: var(--color-grey); line-height: 1.65; flex: 1;">
+        <span class="nl">De snelste manier om te starten. We bespreken wat tijd kost, wat het kost en wat AI voor jou zou kunnen betekenen.</span>
+        <span class="en">The fastest way to get started. We discuss what's eating your time, what it costs, and what AI could do for you.</span>
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="width: 8px; height: 8px; background: var(--color-green); border-radius: 50%; flex-shrink: 0;"></span>
+          <span style="font-size: var(--body-font-m); color: rgba(255,255,255,0.7);">
+            <span class="nl">30 minuten</span><span class="en">30 minutes</span>
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="width: 8px; height: 8px; background: var(--color-green); border-radius: 50%; flex-shrink: 0;"></span>
+          <span style="font-size: var(--body-font-m); color: rgba(255,255,255,0.7);">
+            <span class="nl">Gratis, geen verplichtingen</span><span class="en">Free, no obligations</span>
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="width: 8px; height: 8px; background: var(--color-green); border-radius: 50%; flex-shrink: 0;"></span>
+          <span style="font-size: var(--body-font-m); color: rgba(255,255,255,0.7);">
+            <span class="nl">Video of telefonisch</span><span class="en">Video or phone</span>
+          </span>
+        </div>
+      </div>
+      <a href="#" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: var(--color-green); color: var(--color-black); border: none; border-radius: 100px; padding: 0.9rem 2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; align-self: flex-start;">
+        <span class="nl">Plan via Calendly</span>
+        <span class="en">Book via Calendly</span>
+        →
+      </a>
+    </div>
+
+    <!-- Contact form -->
+    <div style="background: #f6f7fb; border-radius: 16px; padding: var(--space-l);">
+      <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">
+        <span class="nl">Direct contact</span>
+        <span class="en">Direct contact</span>
+      </p>
+      <h2 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); line-height: 1.1; margin-bottom: var(--space-m);">
+        <span class="nl">Direct contact</span>
+        <span class="en">Direct contact</span>
+      </h2>
+      <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65; margin-bottom: var(--space-m);">
+        <span class="nl">Liever eerst een berichtje sturen? Dat kan ook.</span>
+        <span class="en">Prefer to send a message first? That works too.</span>
+      </p>
+      <div id="success-msg" class="success-msg">
+        <span class="nl">Bedankt! We nemen binnen 1 werkdag contact met je op.</span>
+        <span class="en">Thanks! We'll get back to you within 1 working day.</span>
+      </div>
+      <form id="contact-form" style="display: flex; flex-direction: column; gap: 1rem;" onsubmit="handleSubmit(event)">
+        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-field">
+            <label for="name"><span class="nl">Naam</span><span class="en">Name</span></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="company"><span class="nl">Bedrijf</span><span class="en">Company</span></label>
+            <input type="text" id="company" name="company">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email"><span class="nl">E-mailadres</span><span class="en">Email</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="message"><span class="nl">Bericht</span><span class="en">Message</span></label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span class="nl">Verstuur</span><span class="en">Send</span>
+          <span>→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section style="border-top: 1px solid var(--color-lightgrey); padding: var(--space-3xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl);" class="contact-grid">
+    <div>
+      <p class="section-tag"><span class="nl">Waar we werken</span><span class="en">Where we work</span></p>
+      <h2 style="font-size: var(--display-font-m); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;">
+        <span class="nl">Waar we werken</span>
+        <span class="en">Where we work</span>
+      </h2>
+    </div>
+    <div>
+      <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.7; margin-bottom: var(--space-l);">
+        <span class="nl">We zijn gevestigd in Nederland en werken door het hele land. Trainingen geven we bij de klant op locatie. Automatiseringen en tools bouwen we deels op afstand.</span>
+        <span class="en">We're based in the Netherlands and work nationwide. Training is delivered on-site at the client's location. Automations and tools are built partly remotely.</span>
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        <span style="background: var(--color-white); border: 1px solid var(--color-lightgrey); border-radius: 100px; padding: 0.5rem 1.2rem; font-size: var(--body-font-m); font-weight: 500; display: flex; align-items: center; gap: 0.4rem;">
+          📍 <span class="nl">Nederland</span><span class="en">Netherlands</span>
+        </span>
+        <span style="background: var(--color-white); border: 1px solid var(--color-lightgrey); border-radius: 100px; padding: 0.5rem 1.2rem; font-size: var(--body-font-m); font-weight: 500; display: flex; align-items: center; gap: 0.4rem;">
+          🇳🇱 <span class="nl">In het Nederlands</span><span class="en">In Dutch</span>
+        </span>
+        <span style="background: var(--color-white); border: 1px solid var(--color-lightgrey); border-radius: 100px; padding: 0.5rem 1.2rem; font-size: var(--body-font-m); font-weight: 500; display: flex; align-items: center; gap: 0.4rem;">
+          🌐 <span class="nl">Ook remote</span><span class="en">Also remote</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Koen &amp; Lars</a>
+    <p class="footer-meta"><span class="nl">AI Integratie Specialisten · Nederland</span><span class="en">AI Integration Specialists · Netherlands</span> · contact@koenenlars.nl</p>
+    <ul class="footer-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  const toggle = document.getElementById('lang-toggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('lang-en');
+    const isEN = document.body.classList.contains('lang-en');
+    document.documentElement.lang = isEN ? 'en' : 'nl';
+    toggle.textContent = isEN ? 'NL' : 'EN';
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('success-msg').classList.add('show');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koen & Lars — AI voor kleine bedrijven</title>
+  <meta name="description" content="Wij helpen kleine bedrijven AI écht gebruiken. Geen theorie. Geen consultancy-rapport. Wij komen bij je langs en lossen het op.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-blue: #004dce;
+      --color-white: #fefefe;
+      --color-green: #4ef992;
+      --color-black: #120e20;
+      --color-darkgrey: #69647c;
+      --color-grey: #928ea3;
+      --color-lightgrey: #e6e6ec;
+      --color-alert: #F94200;
+
+      --ft-b-100: clamp(1.125rem, 1.294498vw + 0.8216rem, 2.375rem);
+      --display-font-xl: calc(var(--ft-b-100) * 3.8);
+      --display-font-l: calc(var(--ft-b-100) * 2.5);
+      --display-font-m: calc(var(--ft-b-100) * 2);
+      --display-font-s: calc(var(--ft-b-100) * 1.5);
+      --body-font-l: var(--ft-b-100);
+      --body-font-m: calc(var(--body-font-l) * 0.75);
+      --body-font-s: calc(var(--body-font-l) * 0.62);
+      --body-font-xs: calc(var(--body-font-l) * 0.56);
+
+      --space-7xl: calc(var(--display-font-xl) * 2.5);
+      --space-6xl: calc(var(--display-font-xl) * 2);
+      --space-5xl: calc(var(--display-font-xl) * 1.5);
+      --space-4xl: calc(var(--display-font-xl) * 1.2);
+      --space-3xl: calc(var(--display-font-xl) * 1);
+      --space-2xl: calc(var(--display-font-xl) * 0.8);
+      --space-xl: calc(var(--display-font-xl) * 0.6);
+      --space-l: calc(var(--display-font-xl) * 0.4);
+      --space-m: calc(var(--display-font-xl) * 0.3);
+      --space-s: calc(var(--display-font-xl) * 0.1);
+      --space-xs: calc(var(--display-font-xl) * 0.04);
+      --layout-padding: var(--space-l);
+      --max-content-width: 1920px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--color-white);
+      -webkit-font-smoothing: antialiased;
+      -webkit-user-drag: none;
+      overflow-x: hidden;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      color: var(--color-black);
+      font-feature-settings: "ss02";
+    }
+
+    /* Language toggle */
+    .lang-en .nl { display: none !important; }
+    .lang-en .en { display: inline !important; }
+    .en { display: none; }
+    .nl { display: inline; }
+    .lang-en .nl-block { display: none !important; }
+    .lang-en .en-block { display: block !important; }
+    .en-block { display: none; }
+    .nl-block { display: block; }
+
+    /* Layout */
+    .container {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 0 var(--layout-padding);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-lightgrey);
+      padding: 0 var(--layout-padding);
+    }
+
+    .nav-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      font-size: var(--body-font-l);
+      font-weight: 600;
+      color: var(--color-black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: var(--body-font-m);
+      color: var(--color-darkgrey);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-black);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-btn {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-s);
+      font-weight: 500;
+      color: var(--color-darkgrey);
+      background: none;
+      border: 1px solid var(--color-lightgrey);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-btn:hover {
+      background: var(--color-black);
+      color: var(--color-white);
+      border-color: var(--color-black);
+    }
+
+    .btn-primary {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-m);
+      font-weight: 500;
+      background: var(--color-black);
+      color: var(--color-white);
+      border: none;
+      border-radius: 100px;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-blue);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-outline {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-m);
+      font-weight: 500;
+      background: transparent;
+      color: var(--color-black);
+      border: 1px solid var(--color-black);
+      border-radius: 100px;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover {
+      background: var(--color-black);
+      color: var(--color-white);
+    }
+
+    .btn-blue {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-m);
+      font-weight: 500;
+      background: var(--color-blue);
+      color: var(--color-white);
+      border: none;
+      border-radius: 100px;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      font-size: var(--body-font-l);
+    }
+
+    .btn-blue:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    .btn-blue:active {
+      transform: translateY(0);
+    }
+
+    /* HERO */
+    .hero {
+      padding: var(--space-3xl) var(--layout-padding) var(--space-2xl);
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-l);
+      align-items: end;
+      min-height: 80vh;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+    }
+
+    .hero-label {
+      font-size: var(--body-font-s);
+      font-weight: 500;
+      color: var(--color-darkgrey);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--color-darkgrey);
+    }
+
+    .hero-headline {
+      font-size: var(--display-font-xl);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--color-black);
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--color-blue);
+    }
+
+    .hero-subline {
+      font-size: var(--body-font-l);
+      color: var(--color-darkgrey);
+      line-height: 1.6;
+      max-width: 36ch;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-top: var(--space-s);
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-bottom: var(--space-m);
+    }
+
+    .hero-deco {
+      width: clamp(200px, 40vw, 480px);
+      height: clamp(200px, 40vw, 480px);
+      border-radius: 50%;
+      border: 1px solid var(--color-lightgrey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f0f4ff 0%, var(--color-white) 60%);
+    }
+
+    .hero-deco-inner {
+      font-size: clamp(120px, 22vw, 280px);
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      color: #dde2f0;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .hero-deco-badge {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-blue);
+      color: var(--color-white);
+      font-size: var(--body-font-xs);
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: var(--space-l);
+    }
+
+    .section-tag {
+      font-size: var(--body-font-xs);
+      font-weight: 500;
+      color: var(--color-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-tag::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 2rem;
+      background: currentColor;
+    }
+
+    .section-title {
+      font-size: var(--display-font-l);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--color-black);
+    }
+
+    .section-title-white {
+      color: var(--color-white);
+    }
+
+    /* PROBLEM SECTION */
+    .problem-section {
+      padding: var(--space-4xl) var(--layout-padding);
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+    }
+
+    .problem-headline {
+      font-size: var(--display-font-m);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--color-black);
+      max-width: 24ch;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--color-lightgrey);
+      border: 1px solid var(--color-lightgrey);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .card {
+      background: var(--color-white);
+      padding: var(--space-l);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .card-number {
+      font-size: var(--body-font-xs);
+      font-weight: 600;
+      color: var(--color-grey);
+      letter-spacing: 0.1em;
+    }
+
+    .card-title {
+      font-size: var(--display-font-s);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--color-black);
+      margin-top: auto;
+    }
+
+    .card-body {
+      font-size: var(--body-font-m);
+      color: var(--color-darkgrey);
+      line-height: 1.65;
+    }
+
+    /* DARK STATEMENT SECTION */
+    .statement-section {
+      background: var(--color-black);
+      padding: var(--space-4xl) var(--layout-padding);
+    }
+
+    .statement-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+    }
+
+    .statement-text {
+      font-size: var(--display-font-xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--color-white);
+      max-width: 18ch;
+    }
+
+    .statement-text em {
+      font-style: normal;
+      color: var(--color-green);
+    }
+
+    .statement-sub {
+      font-size: var(--body-font-l);
+      color: var(--color-grey);
+      line-height: 1.6;
+      max-width: 40ch;
+      margin-top: var(--space-m);
+    }
+
+    /* SERVICES SECTION */
+    .services-section {
+      background: var(--color-black);
+      padding: 0 var(--layout-padding) var(--space-4xl);
+    }
+
+    .services-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+    }
+
+    .services-header {
+      padding: var(--space-2xl) 0 var(--space-l);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .service-card {
+      padding: var(--space-l) var(--space-l) var(--space-l) 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding-right: var(--space-l);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .service-card:first-child {
+      padding-left: 0;
+    }
+
+    .service-card:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .service-card + .service-card {
+      padding-left: var(--space-l);
+    }
+
+    .service-num {
+      font-size: var(--body-font-xs);
+      font-weight: 600;
+      color: var(--color-grey);
+      letter-spacing: 0.1em;
+      padding-top: var(--space-l);
+    }
+
+    .service-title {
+      font-size: var(--display-font-s);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--color-white);
+    }
+
+    .service-body {
+      font-size: var(--body-font-m);
+      color: var(--color-grey);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .service-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: var(--space-s);
+    }
+
+    .service-include-item {
+      font-size: var(--body-font-s);
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .service-include-item::before {
+      content: '→';
+      color: var(--color-green);
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    .service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--body-font-m);
+      font-weight: 500;
+      color: var(--color-green);
+      text-decoration: none;
+      margin-top: var(--space-s);
+      transition: gap 0.2s;
+      font-family: 'Bricolage Grotesque', sans-serif;
+    }
+
+    .service-cta:hover {
+      gap: 0.8rem;
+    }
+
+    /* HOW IT WORKS */
+    .how-section {
+      padding: var(--space-4xl) var(--layout-padding);
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--color-lightgrey);
+      border: 1px solid var(--color-lightgrey);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: var(--space-2xl);
+    }
+
+    .step-card {
+      background: var(--color-white);
+      padding: var(--space-l);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+
+    .step-number {
+      font-size: var(--display-font-m);
+      font-weight: 700;
+      color: var(--color-lightgrey);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .step-title {
+      font-size: var(--body-font-l);
+      font-weight: 700;
+      color: var(--color-black);
+      letter-spacing: -0.015em;
+    }
+
+    .step-body {
+      font-size: var(--body-font-m);
+      color: var(--color-darkgrey);
+      line-height: 1.65;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--color-blue);
+      padding: var(--space-4xl) var(--layout-padding);
+    }
+
+    .cta-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-l);
+    }
+
+    .cta-text {}
+
+    .cta-headline {
+      font-size: var(--display-font-l);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--color-white);
+    }
+
+    .cta-subline {
+      font-size: var(--body-font-l);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-top: var(--space-s);
+      max-width: 44ch;
+    }
+
+    .btn-white {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: var(--body-font-l);
+      font-weight: 600;
+      background: var(--color-white);
+      color: var(--color-blue);
+      border: none;
+      border-radius: 100px;
+      padding: 1rem 2.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-white:hover {
+      background: var(--color-black);
+      color: var(--color-white);
+      transform: translateY(-2px);
+    }
+
+    .btn-white:active {
+      transform: translateY(0);
+    }
+
+    /* TOOLS CAROUSEL */
+    .tool-carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: var(--space-l);
+    }
+    .carousel-col {
+      width: 160px;
+      height: 88px;
+      overflow: hidden;
+      position: relative;
+      border-right: 1px solid var(--color-lightgrey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-col:first-child { border-left: 1px solid var(--color-lightgrey); }
+    .carousel-item {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+    }
+    .carousel-item img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+    .carousel-item span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--color-darkgrey);
+      text-align: center;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    @keyframes carouselIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    @keyframes carouselOut {
+      from { transform: translateY(0);    opacity: 1; }
+      to   { transform: translateY(-24px); opacity: 0; }
+    }
+    .carousel-item.entering {
+      animation: carouselIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .carousel-item.exiting {
+      animation: carouselOut 0.25s ease forwards;
+    }
+    @media (max-width: 640px) {
+      .carousel-col { width: 72px; height: 72px; }
+      .carousel-item img { width: 28px; height: 28px; }
+      .carousel-item span { display: none; }
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--color-lightgrey);
+      padding: var(--space-l) var(--layout-padding);
+    }
+
+    .footer-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: var(--body-font-l);
+      font-weight: 600;
+      color: var(--color-black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-meta {
+      font-size: var(--body-font-s);
+      color: var(--color-grey);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: var(--body-font-s);
+      color: var(--color-darkgrey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-black);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: var(--space-2xl);
+      }
+      .hero-right { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding-left: 0 !important; padding-right: 0 !important; }
+      .service-card:last-child { border-bottom: none; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --display-font-xl: 2.75rem;
+        --display-font-l: 2rem;
+        --display-font-m: 1.65rem;
+        --display-font-s: 1.3rem;
+        --layout-padding: 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --display-font-xl: 2.25rem;
+        --display-font-l: 1.75rem;
+        --display-font-m: 1.5rem;
+        --display-font-s: 1.2rem;
+        --layout-padding: 1rem;
+      }
+      .nav-links { display: none; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .nav-right { gap: 0.5rem; }
+      .btn-primary { padding: 0.5rem 1rem; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .hero-ctas a { width: 100%; justify-content: center; }
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-label { animation: fadeUp 0.6s ease both; }
+    .hero-headline { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-subline { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-ctas { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-deco { animation: fadeUp 0.8s 0.2s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Koen &amp; Lars</a>
+    <ul class="nav-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-toggle">EN</button>
+      <a href="contact.html" class="btn-primary">
+        <span class="nl">Plan een gesprek</span><span class="en">Book a call</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding: 0 var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: var(--space-l); align-items: end; padding-top: var(--space-3xl); padding-bottom: var(--space-2xl);">
+    <div class="hero-text">
+      <p class="hero-label">
+        <span class="nl">AI Integratie voor kleine bedrijven</span>
+        <span class="en">AI Integration for small businesses</span>
+      </p>
+      <h1 class="hero-headline">
+        <span class="nl">Wij helpen kleine bedrijven AI <em>écht</em> gebruiken.</span>
+        <span class="en">We help small businesses actually <em>use</em> AI.</span>
+      </h1>
+      <p class="hero-subline">
+        <span class="nl">Geen theorie. Geen consultancy-rapport. Wij komen bij je langs en lossen het op.</span>
+        <span class="en">No theory. No strategy decks. We show up and fix it.</span>
+      </p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn-primary" style="font-size: var(--body-font-l); padding: 0.8rem 2rem;">
+          <span class="nl">Plan een gratis gesprek</span><span class="en">Book a free call</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="services.html" class="btn-outline" style="font-size: var(--body-font-l); padding: 0.8rem 2rem;">
+          <span class="nl">Bekijk wat we doen</span><span class="en">See what we do</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right" style="display: flex; align-items: flex-end; justify-content: flex-end; padding-bottom: var(--space-m);">
+      <div class="hero-deco">
+        <span class="hero-deco-inner">AI</span>
+        <span class="hero-deco-badge">
+          <span class="nl">Praktisch & hands-on</span>
+          <span class="en">Practical & hands-on</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS SECTION -->
+<section style="padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto;">
+    <h2 class="section-title" style="margin-bottom: var(--space-l); text-align: center;">
+      <span class="nl">Wij bouwen met wat werkt.</span>
+      <span class="en">We build with what works.</span>
+    </h2>
+    <div class="tool-carousel" id="tool-carousel"></div>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section style="padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto;">
+    <div>
+      <p class="section-tag">
+        <span class="nl">Het probleem</span>
+        <span class="en">The problem</span>
+      </p>
+      <h2 class="section-title" style="max-width: 22ch;">
+        <span class="nl">Elke grote AI-firma is onbetaalbaar voor kleine bedrijven.</span>
+        <span class="en">Every major AI firm is out of reach for small businesses.</span>
+      </h2>
+    </div>
+    <div class="cards-grid" style="margin-top: var(--space-2xl);">
+      <div class="card">
+        <span class="card-number">01</span>
+        <h3 class="card-title">
+          <span class="nl">AI-angst</span>
+          <span class="en">AI anxiety</span>
+        </h3>
+        <p class="card-body">
+          <span class="nl">Ondernemers horen de hype maar weten niet waar te beginnen of wie ze kunnen vertrouwen. Ze maken zich zorgen over privacy, kosten en weerstand van medewerkers — dus doen ze niets.</span>
+          <span class="en">Owners have heard the hype but don't know where to start or who to trust. They worry about privacy, cost, and staff resistance — so they do nothing.</span>
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-number">02</span>
+        <h3 class="card-title">
+          <span class="nl">Verspilde tijd</span>
+          <span class="en">Wasted time</span>
+        </h3>
+        <p class="card-body">
+          <span class="nl">Zonder AI blijven repetitieve administratieve taken — e-mailconcepten, planning, rapportages, factuurherinneringen — 8 tot 15 uur per week per medewerker kosten die geautomatiseerd kunnen worden.</span>
+          <span class="en">Without AI, repetitive admin tasks — email drafting, scheduling, report generation, invoice chasing — continue to eat 8–15 hours per week per team member that could be automated.</span>
+        </p>
+      </div>
+      <div class="card">
+        <span class="card-number">03</span>
+        <h3 class="card-title">
+          <span class="nl">Concurrentiedrift</span>
+          <span class="en">Competitive drift</span>
+        </h3>
+        <p class="card-body">
+          <span class="nl">Bedrijven die AI vroeg adopteren — zelfs basale tools — lopen vooruit op snelheid, kosten per output en klantervaring. De kloof wordt elke maand groter.</span>
+          <span class="en">Businesses that adopt AI early — even basic tools — are pulling ahead on speed, cost per output, and customer experience. The gap is widening every month.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK STATEMENT + SERVICES -->
+<div class="statement-section">
+  <div class="statement-inner">
+    <p class="section-tag" style="color: var(--color-grey);">
+      <span class="nl">Wat we doen</span>
+      <span class="en">What we do</span>
+    </p>
+    <p class="statement-text">
+      <span class="nl">Drie manieren om AI te laten <em>werken</em> voor jouw bedrijf.</span>
+      <span class="en">Three ways to make AI <em>work</em> for your business.</span>
+    </p>
+  </div>
+</div>
+
+<div class="services-section">
+  <div class="services-inner">
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <h3 class="service-title">
+          Training &amp; Onboarding
+        </h3>
+        <p class="service-body">
+          <span class="nl">Workshops op locatie, in het Nederlands, voor mensen die AI nog nooit professioneel hebben gebruikt. Geen theorie — gewoon oefenen met echte taken van jouw team.</span>
+          <span class="en">On-site workshops, in Dutch, designed for people who've never used AI professionally. No theory — just hands-on practice with your team's real tasks.</span>
+        </p>
+        <div class="service-includes">
+          <span class="service-include-item">
+            <span class="nl">Teamworkshop (tot 8 personen)</span>
+            <span class="en">Team workshop (up to 8 people)</span>
+          </span>
+          <span class="service-include-item">
+            <span class="nl">1-op-1 ondernemerssessie (2 uur)</span>
+            <span class="en">1-on-1 owner session (2 hours)</span>
+          </span>
+          <span class="service-include-item">
+            <span class="nl">Maandelijkse follow-up support</span>
+            <span class="en">Monthly follow-up support (async)</span>
+          </span>
+        </div>
+        <a href="services.html" class="service-cta">
+          <span class="nl">Meer over training</span>
+          <span class="en">More about training</span>
+          <span>→</span>
+        </a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <h3 class="service-title">
+          <span class="nl">Workflow Automatisering</span>
+          <span class="en">Workflow Automation</span>
+        </h3>
+        <p class="service-body">
+          <span class="nl">We koppelen de tools die jouw bedrijf al gebruikt — e-mail, agenda, CRM, facturatie, WhatsApp — en automatiseren de herhaalde stappen daartussen. Geen code nodig.</span>
+          <span class="en">We connect the tools your business already uses — email, calendar, CRM, invoicing, WhatsApp — and automate the repetitive steps between them. No code required.</span>
+        </p>
+        <div class="service-includes">
+          <span class="service-include-item">n8n · Make.com</span>
+          <span class="service-include-item">
+            <span class="nl">AI API-koppelingen</span>
+            <span class="en">AI API integrations</span>
+          </span>
+          <span class="service-include-item">
+            <span class="nl">Volledig gedocumenteerd</span>
+            <span class="en">Fully documented and easy to maintain</span>
+          </span>
+        </div>
+        <a href="services.html" class="service-cta">
+          <span class="nl">Meer over automatisering</span>
+          <span class="en">More about automation</span>
+          <span>→</span>
+        </a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <h3 class="service-title">
+          <span class="nl">Maatwerk AI-tools</span>
+          <span class="en">Custom AI Tools</span>
+        </h3>
+        <p class="service-body">
+          <span class="nl">Voor klanten die iets nodig hebben dat kant-en-klaar niet bestaat, bouwen wij het. Lichtgewicht tools die precies één ding heel goed doen — gebouwd met Claude Code en de Anthropic API.</span>
+          <span class="en">For clients who need something that doesn't exist off the shelf, we build it. Lightweight tools that do exactly one thing very well — built with Claude Code and the Anthropic API.</span>
+        </p>
+        <div class="service-includes">
+          <span class="service-include-item">Claude Code · Anthropic API</span>
+          <span class="service-include-item">
+            <span class="nl">Lokale implementatie mogelijk</span>
+            <span class="en">Local deployment available</span>
+          </span>
+        </div>
+        <a href="services.html" class="service-cta">
+          <span class="nl">Meer over maatwerk</span>
+          <span class="en">More about custom tools</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section style="padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto;">
+    <p class="section-tag">
+      <span class="nl">Het proces</span>
+      <span class="en">The process</span>
+    </p>
+    <h2 class="section-title">
+      <span class="nl">Hoe het werkt</span>
+      <span class="en">How it works</span>
+    </h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-number">01</span>
+        <h3 class="step-title">
+          <span class="nl">Ontdekken</span>
+          <span class="en">Discover</span>
+        </h3>
+        <p class="step-body">
+          <span class="nl">Gratis gesprek van 30 minuten. We vragen wat tijd kost, welke tools je al gebruikt en wat het grootste verschil zou maken. Geen jargon, geen verkooppraatje.</span>
+          <span class="en">Free 30-minute call. We ask what's eating your time, what tools you already use, and what would make the biggest difference. No jargon, no sales pitch.</span>
+        </p>
+      </div>
+      <div class="step-card">
+        <span class="step-number">02</span>
+        <h3 class="step-title">
+          <span class="nl">Voorstel</span>
+          <span class="en">Propose</span>
+        </h3>
+        <p class="step-body">
+          <span class="nl">We sturen binnen 48 uur een voorstel van één pagina. Vaste prijs, heldere deliverable, duidelijke tijdlijn. Je kunt ja of nee zeggen zonder een vervolgafspraak.</span>
+          <span class="en">We send a one-page proposal within 48 hours. Fixed price, clear deliverable, clear timeline. You can say yes or no without a follow-up meeting.</span>
+        </p>
+      </div>
+      <div class="step-card">
+        <span class="step-number">03</span>
+        <h3 class="step-title">
+          <span class="nl">Leveren</span>
+          <span class="en">Deliver</span>
+        </h3>
+        <p class="step-body">
+          <span class="nl">We komen langs en doen het werk — training op locatie, gebouwde automatisering, geïmplementeerde tool. We geven je geen PDF en verdwijnen niet.</span>
+          <span class="en">We show up and do the work — on-site training, built automation, deployed tool. We don't hand over a PDF and disappear.</span>
+        </p>
+      </div>
+      <div class="step-card">
+        <span class="step-number">04</span>
+        <h3 class="step-title">
+          <span class="nl">Ondersteunen</span>
+          <span class="en">Support</span>
+        </h3>
+        <p class="step-body">
+          <span class="nl">Na oplevering heb je 30 dagen gratis async support. Daarna kun je kiezen voor een betaalbare maandelijkse retainer of project per project.</span>
+          <span class="en">After delivery, you have 30 days of free async support. After that, you can join a low-cost monthly retainer or reach out project by project.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2 class="cta-headline">
+        <span class="nl">Klaar om te beginnen?</span>
+        <span class="en">Ready to get started?</span>
+      </h2>
+      <p class="cta-subline">
+        <span class="nl">Plan een gratis gesprek van 30 minuten. Geen verplichtingen, geen jargon.</span>
+        <span class="en">Book a free 30-minute call. No obligations, no jargon.</span>
+      </p>
+    </div>
+    <a href="contact.html" class="btn-white">
+      <span class="nl">Plan een gratis gesprek</span>
+      <span class="en">Book a free call</span>
+      <span>→</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Koen &amp; Lars</a>
+    <p class="footer-meta">
+      <span class="nl">AI Integratie Specialisten · Nederland</span>
+      <span class="en">AI Integration Specialists · Netherlands</span>
+      · contact@koenenlars.nl
+    </p>
+    <ul class="footer-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('lang-toggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('lang-en');
+    const isEN = document.body.classList.contains('lang-en');
+    document.documentElement.lang = isEN ? 'en' : 'nl';
+    toggle.textContent = isEN ? 'NL' : 'EN';
+  });
+
+  // Tool carousel
+  const tools = [
+    { name: 'Claude Code',       logo: 'https://cdn.simpleicons.org/anthropic/120e20' },
+    { name: 'Anthropic API',     logo: 'https://cdn.simpleicons.org/anthropic/004dce' },
+    { name: 'n8n',               logo: 'https://cdn.simpleicons.org/n8n' },
+    { name: 'Make.com',          logo: 'https://cdn.simpleicons.org/make' },
+    { name: 'ChatGPT',           logo: 'https://cdn.simpleicons.org/openai/120e20' },
+    { name: 'Notion AI',         logo: 'https://cdn.simpleicons.org/notion/120e20' },
+    { name: 'Zapier',            logo: 'https://cdn.simpleicons.org/zapier' },
+    { name: 'Google Workspace',  logo: 'https://cdn.simpleicons.org/googleworkspace' },
+    { name: 'Microsoft 365',     logo: 'https://cdn.simpleicons.org/microsoft' },
+    { name: 'WhatsApp Business', logo: 'https://cdn.simpleicons.org/whatsapp' },
+  ];
+
+  const COLS = 5;
+  const CYCLE_MS = 2000;
+  const STAGGER_MS = 200;
+
+  const columns = Array.from({ length: COLS }, (_, i) =>
+    tools.filter((_, j) => j % COLS === i)
+  );
+
+  const carousel = document.getElementById('tool-carousel');
+  const colEls = columns.map(() => {
+    const col = document.createElement('div');
+    col.className = 'carousel-col';
+    carousel.appendChild(col);
+    return col;
+  });
+
+  const indices = new Array(COLS).fill(0);
+
+  function showTool(colEl, tool) {
+    const item = document.createElement('div');
+    item.className = 'carousel-item entering';
+    item.innerHTML = `<img src="${tool.logo}" alt="${tool.name}"><span>${tool.name}</span>`;
+    const existing = colEl.querySelector('.carousel-item');
+    if (existing) {
+      existing.classList.remove('entering');
+      existing.classList.add('exiting');
+      existing.addEventListener('animationend', () => existing.remove(), { once: true });
+    }
+    colEl.appendChild(item);
+  }
+
+  columns.forEach((col, i) => {
+    if (col.length > 0) showTool(colEls[i], col[0]);
+  });
+
+  columns.forEach((col, i) => {
+    if (col.length < 2) return;
+    setTimeout(() => {
+      setInterval(() => {
+        indices[i] = (indices[i] + 1) % col.length;
+        showTool(colEls[i], col[indices[i]]);
+      }, CYCLE_MS);
+    }, i * STAGGER_MS);
+  });
+</script>
+
+</body>
+</html>

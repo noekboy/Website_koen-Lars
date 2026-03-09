@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over ons — Koen &amp; Lars</title>
+  <meta name="description" content="Geen groot bureau. Geen consultants. Twee mensen die gewoon het werk doen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-blue: #004dce;
+      --color-white: #fefefe;
+      --color-green: #4ef992;
+      --color-black: #120e20;
+      --color-darkgrey: #69647c;
+      --color-grey: #928ea3;
+      --color-lightgrey: #e6e6ec;
+      --ft-b-100: clamp(1.125rem, 1.294498vw + 0.8216rem, 2.375rem);
+      --display-font-xl: calc(var(--ft-b-100) * 3.8);
+      --display-font-l: calc(var(--ft-b-100) * 2.5);
+      --display-font-m: calc(var(--ft-b-100) * 2);
+      --display-font-s: calc(var(--ft-b-100) * 1.5);
+      --body-font-l: var(--ft-b-100);
+      --body-font-m: calc(var(--body-font-l) * 0.75);
+      --body-font-s: calc(var(--body-font-l) * 0.62);
+      --body-font-xs: calc(var(--body-font-l) * 0.56);
+      --space-4xl: calc(var(--display-font-xl) * 1.2);
+      --space-3xl: calc(var(--display-font-xl) * 1);
+      --space-2xl: calc(var(--display-font-xl) * 0.8);
+      --space-xl: calc(var(--display-font-xl) * 0.6);
+      --space-l: calc(var(--display-font-xl) * 0.4);
+      --space-m: calc(var(--display-font-xl) * 0.3);
+      --space-s: calc(var(--display-font-xl) * 0.1);
+      --layout-padding: var(--space-l);
+      --max-content-width: 1920px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-white); font-family: 'Bricolage Grotesque', sans-serif; color: var(--color-black); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .lang-en .nl { display: none !important; }
+    .lang-en .en { display: inline !important; }
+    .en { display: none; }
+    .nl { display: inline; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--color-white); border-bottom: 1px solid var(--color-lightgrey); padding: 0 var(--layout-padding); }
+    .nav-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 2rem; }
+    .nav-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: var(--body-font-m); color: var(--color-darkgrey); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-black); font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .lang-btn { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-s); font-weight: 500; color: var(--color-darkgrey); background: none; border: 1px solid var(--color-lightgrey); border-radius: 100px; padding: 0.25rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+    .lang-btn:hover { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+    .btn-primary { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.6rem 1.4rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; white-space: nowrap; }
+    .btn-primary:hover { background: var(--color-blue); }
+    .section-tag { font-size: var(--body-font-xs); font-weight: 500; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .section-tag::after { content: ''; display: block; height: 1px; width: 2rem; background: currentColor; }
+    footer { border-top: 1px solid var(--color-lightgrey); padding: var(--space-l) var(--layout-padding); }
+    .footer-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .footer-logo { font-size: var(--body-font-l); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .footer-meta { font-size: var(--body-font-s); color: var(--color-grey); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { font-size: var(--body-font-s); color: var(--color-darkgrey); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--color-black); }
+    @media (max-width: 768px) {
+      :root {
+        --display-font-xl: 2.75rem;
+        --display-font-l: 2rem;
+        --display-font-m: 1.65rem;
+        --display-font-s: 1.3rem;
+        --layout-padding: 1.25rem;
+      }
+      .nav-links { display: none; }
+      .two-col { grid-template-columns: 1fr !important; }
+      .three-col { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      :root {
+        --display-font-xl: 2.25rem;
+        --display-font-l: 1.75rem;
+        --display-font-m: 1.5rem;
+        --display-font-s: 1.2rem;
+        --layout-padding: 1rem;
+      }
+      .nav-right { gap: 0.5rem; }
+      .btn-primary { padding: 0.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Koen &amp; Lars</a>
+    <ul class="nav-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html" class="active"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-toggle">EN</button>
+      <a href="contact.html" class="btn-primary">
+        <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="padding: var(--space-3xl) var(--layout-padding) var(--space-2xl); max-width: var(--max-content-width); margin: 0 auto;">
+  <p class="section-tag"><span class="nl">Over ons</span><span class="en">About us</span></p>
+  <h1 style="font-size: var(--display-font-xl); font-weight: 700; letter-spacing: -0.03em; line-height: 1.0;">
+    <span class="nl">Wij zijn Koen &amp; Lars.</span>
+    <span class="en">We are Koen &amp; Lars.</span>
+  </h1>
+  <p style="font-size: var(--display-font-s); font-weight: 400; color: var(--color-darkgrey); line-height: 1.3; max-width: 36ch; margin-top: var(--space-m); letter-spacing: -0.015em;">
+    <span class="nl">Geen groot bureau. Geen consultants. Twee mensen die gewoon het werk doen.</span>
+    <span class="en">No big agency. No consultants. Two people who just do the work.</span>
+  </p>
+</section>
+
+<!-- MISSION -->
+<section style="background: var(--color-black); padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl);" class="two-col">
+    <div>
+      <p class="section-tag" style="color: var(--color-grey);"><span class="nl">Onze missie</span><span class="en">Our mission</span></p>
+      <h2 style="font-size: var(--display-font-m); font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1.05;">
+        <span class="nl">Waarom we dit doen</span>
+        <span class="en">Why we do this</span>
+      </h2>
+    </div>
+    <div>
+      <p style="font-size: var(--body-font-l); color: var(--color-grey); line-height: 1.7;">
+        <span class="nl">Elke grote AI-firma in Nederland richt zich op bedrijven met 100+ medewerkers en budgetten van €50.000+. Wij geloven dat de bakker om de hoek, het accountantskantoor met 12 mensen, en het opleidingsbedrijf in Drenthe net zo goed toegang verdienen tot AI die écht werkt. Daarom beginnen wij waar anderen stoppen.</span>
+        <span class="en">Every major AI firm in the Netherlands targets companies with 100+ employees and €50,000+ budgets. We believe the local bakery, the 12-person accounting firm, and the training company in Drenthe deserve equal access to AI that actually works. That's why we start where others stop.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section style="padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto;">
+    <p class="section-tag"><span class="nl">Wie we zijn</span><span class="en">Who we are</span></p>
+    <h2 style="font-size: var(--display-font-l); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: var(--space-2xl);">
+      <span class="nl">Het team</span>
+      <span class="en">The team</span>
+    </h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-lightgrey); border: 1px solid var(--color-lightgrey); border-radius: 16px; overflow: hidden;" class="two-col">
+      <div style="background: var(--color-white); padding: var(--space-l);">
+        <img src="Gemini_Generated_Image_uvzvkhuvzvkhuvzv.png" alt="Koen" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: center 10%; margin-bottom: var(--space-m); display: block;">
+        <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+          <span class="nl">Technisch lead</span><span class="en">Technical lead</span>
+        </p>
+        <h3 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); margin-bottom: var(--space-s);">Koen</h3>
+        <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.65;">
+          <span class="nl">Koen bouwt de tools, zet de automatiseringen op en regelt alle integraties. Hij handelt alle Claude Code-ontwikkeling, API-werk en n8n/Make.com-builds af.</span>
+          <span class="en">Koen builds the tools, sets up the automations, and manages all integrations. He handles all Claude Code development, API work, and n8n/Make.com builds.</span>
+        </p>
+      </div>
+      <div style="background: var(--color-white); padding: var(--space-l);">
+        <img src="1760047721033.jpeg" alt="Lars" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: center 15%; margin-bottom: var(--space-m); display: block;">
+        <p style="font-size: var(--body-font-xs); font-weight: 600; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+          Training lead
+        </p>
+        <h3 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); margin-bottom: var(--space-s);">Lars</h3>
+        <p style="font-size: var(--body-font-l); color: var(--color-darkgrey); line-height: 1.65;">
+          <span class="nl">Lars verzorgt elke workshop en onboardingsessie. Hij maakt AI toegankelijk voor mensen die niet technisch zijn en beheert klantrelaties en doorlopende ondersteuning.</span>
+          <span class="en">Lars runs every workshop and onboarding session. He makes AI accessible to non-technical people and handles client relationships and ongoing support.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="padding: 0 var(--layout-padding) var(--space-4xl);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto;">
+    <p class="section-tag"><span class="nl">Hoe we werken</span><span class="en">How we work</span></p>
+    <h2 style="font-size: var(--display-font-l); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: var(--space-2xl);">
+      <span class="nl">Onze waarden</span>
+      <span class="en">Our values</span>
+    </h2>
+    <div class="three-col" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-lightgrey); border: 1px solid var(--color-lightgrey); border-radius: 16px; overflow: hidden;">
+      <div style="background: var(--color-white); padding: var(--space-l);">
+        <span style="font-size: var(--display-font-m); font-weight: 700; color: var(--color-lightgrey); letter-spacing: -0.04em; line-height: 1; display: block; margin-bottom: var(--space-s);">01</span>
+        <h3 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); margin-bottom: var(--space-s);">Hands-on</h3>
+        <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65;">
+          <span class="nl">We leveren geen rapporten op. We komen langs en lossen het op.</span>
+          <span class="en">We don't deliver reports. We show up and fix it.</span>
+        </p>
+      </div>
+      <div style="background: var(--color-white); padding: var(--space-l);">
+        <span style="font-size: var(--display-font-m); font-weight: 700; color: var(--color-lightgrey); letter-spacing: -0.04em; line-height: 1; display: block; margin-bottom: var(--space-s);">02</span>
+        <h3 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); margin-bottom: var(--space-s);">
+          <span class="nl">Eerlijk geprijsd</span>
+          <span class="en">Honestly priced</span>
+        </h3>
+        <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65;">
+          <span class="nl">Kleine bedrijven verdienen toegang tot goede AI-hulp zonder enterprise-budgetten.</span>
+          <span class="en">Small businesses deserve access to good AI help without enterprise budgets.</span>
+        </p>
+      </div>
+      <div style="background: var(--color-white); padding: var(--space-l);">
+        <span style="font-size: var(--display-font-m); font-weight: 700; color: var(--color-lightgrey); letter-spacing: -0.04em; line-height: 1; display: block; margin-bottom: var(--space-s);">03</span>
+        <h3 style="font-size: var(--display-font-s); font-weight: 700; letter-spacing: -0.025em; color: var(--color-black); margin-bottom: var(--space-s);">
+          <span class="nl">Geen lock-in</span>
+          <span class="en">No lock-in</span>
+        </h3>
+        <p style="font-size: var(--body-font-m); color: var(--color-darkgrey); line-height: 1.65;">
+          <span class="nl">Elke deliverable is gedocumenteerd. Jij behoudt de controle, altijd.</span>
+          <span class="en">Every deliverable is documented. You stay in control, always.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div style="background: var(--color-blue); padding: var(--space-4xl) var(--layout-padding);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-l); flex-wrap: wrap;">
+    <div>
+      <h2 style="font-size: var(--display-font-l); font-weight: 700; letter-spacing: -0.03em; color: white; line-height: 1.05;">
+        <span class="nl">Laten we kennismaken.</span>
+        <span class="en">Let's get acquainted.</span>
+      </h2>
+      <p style="font-size: var(--body-font-l); color: rgba(255,255,255,0.7); margin-top: var(--space-s); max-width: 44ch;">
+        <span class="nl">Gratis gesprek van 30 minuten. Geen verplichtingen.</span>
+        <span class="en">Free 30-minute call. No obligations.</span>
+      </p>
+    </div>
+    <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: white; color: var(--color-blue); border: none; border-radius: 100px; padding: 1rem 2.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; transition: all 0.2s;">
+      <span class="nl">Plan een gesprek</span>
+      <span class="en">Book a call</span> →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Koen &amp; Lars</a>
+    <p class="footer-meta"><span class="nl">AI Integratie Specialisten · Nederland</span><span class="en">AI Integration Specialists · Netherlands</span> · contact@koenenlars.nl</p>
+    <ul class="footer-links">
+      <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+      <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+      <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script>
+  const toggle = document.getElementById('lang-toggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('lang-en');
+    const isEN = document.body.classList.contains('lang-en');
+    document.documentElement.lang = isEN ? 'en' : 'nl';
+    toggle.textContent = isEN ? 'NL' : 'EN';
+  });
+</script>
+</body>
+</html>

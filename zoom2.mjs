@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer';
+const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1440, height: 900 });
+await page.goto('http://localhost:3000', { waitUntil: 'networkidle2' });
+await new Promise(r => setTimeout(r, 1500));
+const el = await page.$('#tool-carousel');
+const box = await el.boundingBox();
+await page.screenshot({ path: 'temporary screenshots/screenshot-15-tools-centered.png', clip: { x: 0, y: box.y - 150, width: 1440, height: box.height + 250 } });
+await browser.close();
+console.log('done');
