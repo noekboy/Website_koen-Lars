@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
   <link rel="icon" href="fav.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-blue: #004dce;
@@ -20,15 +22,15 @@
       --color-lightgrey: #e6e6ec;
       --color-alert: #F94200;
 
-      --ft-b-100: clamp(1.125rem, 1.294498vw + 0.8216rem, 2.375rem);
-      --display-font-xl: calc(var(--ft-b-100) * 3.8);
-      --display-font-l: calc(var(--ft-b-100) * 2.5);
-      --display-font-m: calc(var(--ft-b-100) * 2);
-      --display-font-s: calc(var(--ft-b-100) * 1.5);
-      --body-font-l: var(--ft-b-100);
-      --body-font-m: calc(var(--body-font-l) * 0.75);
-      --body-font-s: calc(var(--body-font-l) * 0.62);
-      --body-font-xs: calc(var(--body-font-l) * 0.56);
+      --ft-b-100: 1rem;
+      --display-font-xl: 2.75rem;
+      --display-font-l: 2rem;
+      --display-font-m: 1.5rem;
+      --display-font-s: 1.25rem;
+      --body-font-l: 1rem;
+      --body-font-m: 0.875rem;
+      --body-font-s: 0.8125rem;
+      --body-font-xs: 0.75rem;
 
       --space-7xl: calc(var(--display-font-xl) * 2.5);
       --space-6xl: calc(var(--display-font-xl) * 2);
@@ -840,20 +842,20 @@
 
     @media (max-width: 768px) {
       :root {
-        --display-font-xl: 2.75rem;
-        --display-font-l: 2rem;
-        --display-font-m: 1.65rem;
-        --display-font-s: 1.3rem;
+        --display-font-xl: 2.25rem;
+        --display-font-l: 1.75rem;
+        --display-font-m: 1.375rem;
+        --display-font-s: 1.125rem;
         --layout-padding: 1.25rem;
       }
     }
 
     @media (max-width: 640px) {
       :root {
-        --display-font-xl: 2.25rem;
-        --display-font-l: 1.75rem;
-        --display-font-m: 1.5rem;
-        --display-font-s: 1.2rem;
+        --display-font-xl: 1.875rem;
+        --display-font-l: 1.5rem;
+        --display-font-m: 1.25rem;
+        --display-font-s: 1rem;
         --layout-padding: 1rem;
       }
       .nav-links { display: none; }
@@ -874,7 +876,128 @@
     .hero-headline { animation: fadeUp 0.6s 0.1s ease both; }
     .hero-subline { animation: fadeUp 0.6s 0.2s ease both; }
     .hero-ctas { animation: fadeUp 0.6s 0.3s ease both; }
-    .hero-deco { animation: fadeUp 0.8s 0.2s ease both; }
+
+    /* TERMINAL HERO CARD */
+    @keyframes termBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes termScanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(400px); } }
+    @keyframes termFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes termSlideIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero-terminal {
+      font-family: 'JetBrains Mono', monospace;
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      animation: termSlideIn 0.7s 0.3s ease both;
+      max-width: 560px;
+    }
+    .term-scanline-wrap {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: 12px;
+      z-index: 2;
+    }
+    .term-scanline {
+      position: absolute;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.012), transparent);
+      animation: termScanline 4s linear infinite;
+    }
+    .term-titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+    .term-dots { display: flex; gap: 6px; }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .term-title-label {
+      color: rgba(255,255,255,0.25);
+      font-size: 11px;
+      margin-left: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .term-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .term-tab {
+      flex: 1;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      transition: color 0.4s ease, border-color 0.4s ease;
+      border-bottom: 2px solid transparent;
+    }
+    .term-tab.active {
+      color: rgba(255,255,255,0.8);
+      border-bottom-color: rgba(255,255,255,0.5);
+    }
+    .term-tab.past {
+      color: rgba(255,255,255,0.25);
+    }
+    .term-tab.inactive {
+      color: rgba(255,255,255,0.15);
+    }
+    .term-body {
+      padding: 16px 16px 20px;
+      min-height: 260px;
+      max-height: 380px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+      scrollbar-width: none;
+    }
+    .term-body::-webkit-scrollbar { display: none; }
+    .term-line {
+      display: flex;
+      line-height: 1.7;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+    .term-line.cmd { margin-bottom: 6px; }
+    .term-prefix {
+      flex-shrink: 0;
+      width: 22px;
+      text-align: center;
+    }
+    .term-text { color: rgba(255,255,255,0.82); }
+    .term-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 13px;
+      background: rgba(255,255,255,0.7);
+      margin-left: 1px;
+      vertical-align: text-bottom;
+      animation: termBlink 0.8s step-end infinite;
+    }
+    .term-stat {
+      margin-top: 10px;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      background: rgba(248,113,113,0.06);
+      border: 1px solid rgba(248,113,113,0.15);
+      border-radius: 6px;
+      font-size: 12px;
+      color: rgba(248,113,113,0.7);
+      line-height: 1.5;
+      font-family: 'JetBrains Mono', monospace;
+      animation: termFadeIn 0.4s ease both;
+    }
+    .term-idle-cursor {
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .hero-terminal { max-width: 100%; margin-top: var(--space-xl); }
+    }
   </style>
 </head>
 <body>
@@ -901,7 +1024,7 @@
 
 <!-- HERO -->
 <section style="padding: 0 var(--layout-padding);">
-  <div style="max-width: var(--max-content-width); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: var(--space-l); align-items: end; padding-top: var(--space-3xl); padding-bottom: var(--space-2xl);">
+  <div style="max-width: var(--max-content-width); margin: 0 auto; padding-top: 48px; padding-bottom: var(--space-2xl); display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;">
     <div class="hero-text">
       <p class="hero-label">
         <span class="nl">AI Integratie voor kleine bedrijven</span>
@@ -925,13 +1048,32 @@
         </a>
       </div>
     </div>
-    <div class="hero-right" style="display: flex; align-items: flex-end; justify-content: flex-end; padding-bottom: var(--space-m);">
-      <div class="hero-deco">
-        <span class="hero-deco-inner">AI</span>
-        <span class="hero-deco-badge">
-          <span class="nl">Praktisch & hands-on</span>
-          <span class="en">Practical & hands-on</span>
-        </span>
+    <div class="hero-terminal" id="hero-terminal">
+      <div class="term-scanline-wrap"><div class="term-scanline"></div></div>
+      <!-- Title bar -->
+      <div class="term-titlebar">
+        <div class="term-dots">
+          <div class="term-dot" style="background:#f87171;"></div>
+          <div class="term-dot" style="background:#fbbf24;"></div>
+          <div class="term-dot" style="background:#4ade80;"></div>
+        </div>
+        <span class="term-title-label">koenenlars ~ ai-diagnose</span>
+      </div>
+      <!-- Tabs -->
+      <div class="term-tabs">
+        <div class="term-tab inactive" id="term-tab-without">
+          <span class="nl">Zonder ons</span><span class="en">Without us</span>
+        </div>
+        <div class="term-tab inactive" id="term-tab-with">
+          <span class="nl">Met Koen &amp; Lars</span><span class="en">With Koen &amp; Lars</span>
+        </div>
+      </div>
+      <!-- Body -->
+      <div class="term-body" id="term-body">
+        <div class="term-idle-cursor" id="term-idle">
+          <span class="term-prefix" style="color:#6b7280;">$</span>
+          <span class="term-cursor"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -1265,6 +1407,213 @@
       }, CYCLE_MS);
     }, i * STAGGER_MS);
   });
+
+  // ── TERMINAL HERO ──────────────────────────────────────────────────────────
+  (function() {
+    const CONTENT = {
+      without: {
+        command: 'diagnose --huidige-situatie',
+        steps: {
+          nl: [
+            'AI-hype overal — maar geen idee waar te beginnen.',
+            'Uren verspild aan Googlen, YouTube, trial & error.',
+            'Offertes van €10.000+ voor een rapport dat in de la belandt.',
+            'Niemand die het daadwerkelijk implementeert.',
+            'Alles blijft bij het oude. Dezelfde taken, dezelfde verloren uren.',
+          ],
+          en: [
+            'AI hype everywhere — but no clue where to start.',
+            'Hours wasted on Google, YouTube, trial & error.',
+            '€10,000+ quotes for a report that ends up in a drawer.',
+            'Nobody who actually implements it.',
+            'Nothing changes. Same tasks, same wasted hours.',
+          ],
+        },
+        stat: {
+          nl: '⏳ 8–15 uur/week verspild aan taken die geautomatiseerd kunnen worden',
+          en: '⏳ 8–15 hrs/week wasted on automatable tasks',
+        },
+        prefix: '✗',
+        prefixColor: '#f87171',
+      },
+      with: {
+        command: 'koenenlars --start',
+        steps: {
+          nl: [
+            'Gratis kennismaking — 30 min, wij begrijpen jouw situatie.',
+            'Helder voorstel binnen 48 uur. Vaste prijs, geen verrassingen.',
+            'Wij komen langs en bouwen het. Training, automatisering, maatwerk.',
+            'Alles werkt. Getest, gedocumenteerd, overgedragen.',
+            'Doorlopende support — 30 dagen gratis, daarna flexibel.',
+          ],
+          en: [
+            'Free intro call — 30 min, we understand your situation.',
+            'Clear proposal within 48 hrs. Fixed price, no surprises.',
+            'We show up and build it. Training, automation, custom tools.',
+            'Everything works. Tested, documented, handed off.',
+            'Ongoing support — 30 days free, then flexible.',
+          ],
+        },
+        stat: null,
+        prefix: '✓',
+        prefixColor: '#4ade80',
+      },
+    };
+
+    const COMMAND_SPEED = 55;
+    const LINE_SPEED = 38;
+    const LINGER = 800;
+    const PHASE_PAUSE = 1500;
+
+    function buildQueue(lang) {
+      const q = [];
+      const w = CONTENT.without;
+      q.push({ type: 'command', text: w.command, phase: 'without' });
+      w.steps[lang].forEach(t => q.push({ type: 'line', text: t, prefix: w.prefix, prefixColor: w.prefixColor, phase: 'without' }));
+      q.push({ type: 'stat', text: w.stat[lang], phase: 'without' });
+      q.push({ type: 'pause', duration: PHASE_PAUSE, phase: 'without' });
+      q.push({ type: 'clear', phase: 'with' });
+      const m = CONTENT.with;
+      q.push({ type: 'command', text: m.command, phase: 'with' });
+      m.steps[lang].forEach(t => q.push({ type: 'line', text: t, prefix: m.prefix, prefixColor: m.prefixColor, phase: 'with' }));
+      return q;
+    }
+
+    const termBody = document.getElementById('term-body');
+    const termIdle = document.getElementById('term-idle');
+    const tabWithout = document.getElementById('term-tab-without');
+    const tabWith = document.getElementById('term-tab-with');
+
+    let queue = [];
+    let timeouts = [];
+    let currentIdx = -1;
+    let hasStarted = false;
+    let currentLang = document.body.classList.contains('lang-en') ? 'en' : 'nl';
+
+    function addTimeout(fn, ms) {
+      timeouts.push(setTimeout(fn, ms));
+    }
+    function clearTimeouts() {
+      timeouts.forEach(clearTimeout);
+      timeouts = [];
+    }
+
+    function setTabState(phase) {
+      if (phase === 'idle') {
+        tabWithout.className = 'term-tab inactive';
+        tabWith.className = 'term-tab inactive';
+      } else if (phase === 'without') {
+        tabWithout.className = 'term-tab active';
+        tabWith.className = 'term-tab inactive';
+      } else if (phase === 'with') {
+        tabWithout.className = 'term-tab past';
+        tabWith.className = 'term-tab active';
+      }
+    }
+
+    function createLine(entry) {
+      const div = document.createElement('div');
+      div.className = 'term-line' + (entry.type === 'command' ? ' cmd' : '');
+      const prefix = document.createElement('span');
+      prefix.className = 'term-prefix';
+      prefix.style.color = entry.type === 'command' ? '#6b7280' : entry.prefixColor;
+      prefix.textContent = entry.type === 'command' ? '$' : entry.prefix;
+      const text = document.createElement('span');
+      text.className = 'term-text';
+      div.appendChild(prefix);
+      div.appendChild(text);
+      return { div, text };
+    }
+
+    function typeText(textEl, str, speed, onDone) {
+      let i = 0;
+      const cursor = document.createElement('span');
+      cursor.className = 'term-cursor';
+      textEl.after(cursor);
+
+      function tick() {
+        i++;
+        textEl.textContent = str.slice(0, i);
+        termBody.scrollTop = termBody.scrollHeight;
+        if (i < str.length) {
+          addTimeout(tick, speed);
+        } else {
+          cursor.remove();
+          onDone();
+        }
+      }
+      addTimeout(tick, speed);
+    }
+
+    function advance(idx) {
+      if (idx >= queue.length) return;
+      currentIdx = idx;
+      const item = queue[idx];
+      setTabState(item.phase);
+
+      if (item.type === 'pause') {
+        addTimeout(() => advance(idx + 1), item.duration);
+        return;
+      }
+      if (item.type === 'clear') {
+        // Clear all log lines, leave idle cursor hidden
+        const lines = termBody.querySelectorAll('.term-line, .term-stat');
+        lines.forEach(el => el.remove());
+        addTimeout(() => advance(idx + 1), 100);
+        return;
+      }
+      if (item.type === 'stat') {
+        const stat = document.createElement('div');
+        stat.className = 'term-stat';
+        stat.textContent = item.text;
+        termBody.appendChild(stat);
+        termBody.scrollTop = termBody.scrollHeight;
+        addTimeout(() => advance(idx + 1), LINGER);
+        return;
+      }
+      // command or line
+      const { div, text } = createLine(item);
+      termBody.appendChild(div);
+      const speed = item.type === 'command' ? COMMAND_SPEED : LINE_SPEED;
+      typeText(text, item.text, speed, () => {
+        addTimeout(() => advance(idx + 1), LINGER);
+      });
+    }
+
+    function startTerminal(lang) {
+      clearTimeouts();
+      currentIdx = -1;
+      const lines = termBody.querySelectorAll('.term-line, .term-stat');
+      lines.forEach(el => el.remove());
+      termIdle.style.display = 'flex';
+      setTabState('idle');
+      queue = buildQueue(lang);
+      addTimeout(() => {
+        termIdle.style.display = 'none';
+        advance(0);
+      }, 500);
+    }
+
+    // IntersectionObserver trigger
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !hasStarted) {
+        hasStarted = true;
+        startTerminal(currentLang);
+      }
+    }, { threshold: 0.4 });
+    const termEl = document.getElementById('hero-terminal');
+    if (termEl) obs.observe(termEl);
+
+    // Hook into language toggle
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        currentLang = document.body.classList.contains('lang-en') ? 'en' : 'nl';
+        if (hasStarted) startTerminal(currentLang);
+      });
+    }
+  })();
+  // ── END TERMINAL ────────────────────────────────────────────────────────────
 </script>
 
 </body>
