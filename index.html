@@ -866,6 +866,99 @@
       .hero-ctas a { width: 100%; justify-content: center; }
     }
 
+    /* TIMELINE */
+    .timeline-container {
+      position: relative;
+      margin-top: var(--space-2xl);
+      max-width: 860px;
+    }
+    .timeline-track {
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent 0%, var(--color-lightgrey) 8%, var(--color-lightgrey) 92%, transparent 100%);
+      overflow: hidden;
+    }
+    .timeline-fill {
+      position: absolute;
+      inset-x: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      background: linear-gradient(to bottom, var(--color-black) 0%, var(--color-grey) 100%);
+      border-radius: 2px;
+      will-change: height;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 2.5rem;
+      padding: var(--space-xl) 0;
+    }
+    .timeline-item:first-child { padding-top: 0; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-left {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      width: 200px;
+    }
+    .timeline-dot-col {
+      flex-shrink: 0;
+      width: 32px;
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-white);
+      border: 2px solid var(--color-lightgrey);
+      position: relative;
+      z-index: 1;
+      transition: border-color 0.3s ease;
+    }
+    .timeline-item.active .timeline-dot {
+      border-color: var(--color-black);
+    }
+    .timeline-step-num {
+      font-size: var(--display-font-m);
+      font-weight: 700;
+      color: var(--color-lightgrey);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .timeline-content {
+      flex: 1;
+      padding-bottom: var(--space-m);
+    }
+    .timeline-content h3 {
+      font-size: var(--display-font-s);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--color-black);
+      margin-bottom: 0.75rem;
+    }
+    .timeline-content p {
+      font-size: var(--body-font-m);
+      color: var(--color-darkgrey);
+      line-height: 1.65;
+      max-width: 52ch;
+    }
+    @media (max-width: 768px) {
+      .timeline-left { width: auto; }
+      .timeline-step-num { font-size: var(--display-font-s); }
+      .timeline-item { gap: 1.25rem; }
+    }
+    @media (max-width: 640px) {
+      .timeline-step-num { display: none; }
+    }
+
     /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -1253,50 +1346,65 @@
       <span class="nl">Hoe het werkt</span>
       <span class="en">How it works</span>
     </h2>
-    <div class="steps-grid">
-      <div class="step-card">
-        <span class="step-number">01</span>
-        <h3 class="step-title">
-          <span class="nl">Ontdekken</span>
-          <span class="en">Discover</span>
-        </h3>
-        <p class="step-body">
-          <span class="nl">Gratis gesprek van 30 minuten. We vragen wat tijd kost, welke tools je al gebruikt en wat het grootste verschil zou maken. Geen jargon, geen verkooppraatje.</span>
-          <span class="en">Free 30-minute call. We ask what's eating your time, what tools you already use, and what would make the biggest difference. No jargon, no sales pitch.</span>
-        </p>
+    <div class="timeline-container" id="timeline-container">
+      <div class="timeline-track">
+        <div class="timeline-fill" id="timeline-fill"></div>
       </div>
-      <div class="step-card">
-        <span class="step-number">02</span>
-        <h3 class="step-title">
-          <span class="nl">Voorstel</span>
-          <span class="en">Propose</span>
-        </h3>
-        <p class="step-body">
-          <span class="nl">We sturen binnen 48 uur een voorstel van één pagina. Vaste prijs, heldere deliverable, duidelijke tijdlijn. Je kunt ja of nee zeggen zonder een vervolgafspraak.</span>
-          <span class="en">We send a one-page proposal within 48 hours. Fixed price, clear deliverable, clear timeline. You can say yes or no without a follow-up meeting.</span>
-        </p>
+      <!-- 01 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+          <span class="timeline-step-num">01</span>
+        </div>
+        <div class="timeline-content">
+          <h3><span class="nl">Ontdekken</span><span class="en">Discover</span></h3>
+          <p>
+            <span class="nl">Gratis gesprek van 30 minuten. We vragen wat tijd kost, welke tools je al gebruikt en wat het grootste verschil zou maken. Geen jargon, geen verkooppraatje.</span>
+            <span class="en">Free 30-minute call. We ask what's eating your time, what tools you already use, and what would make the biggest difference. No jargon, no sales pitch.</span>
+          </p>
+        </div>
       </div>
-      <div class="step-card">
-        <span class="step-number">03</span>
-        <h3 class="step-title">
-          <span class="nl">Leveren</span>
-          <span class="en">Deliver</span>
-        </h3>
-        <p class="step-body">
-          <span class="nl">We komen langs en doen het werk — training op locatie, gebouwde automatisering, geïmplementeerde tool. We geven je geen PDF en verdwijnen niet.</span>
-          <span class="en">We show up and do the work — on-site training, built automation, deployed tool. We don't hand over a PDF and disappear.</span>
-        </p>
+      <!-- 02 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+          <span class="timeline-step-num">02</span>
+        </div>
+        <div class="timeline-content">
+          <h3><span class="nl">Voorstel</span><span class="en">Propose</span></h3>
+          <p>
+            <span class="nl">We sturen binnen 48 uur een voorstel van één pagina. Vaste prijs, heldere deliverable, duidelijke tijdlijn. Je kunt ja of nee zeggen zonder een vervolgafspraak.</span>
+            <span class="en">We send a one-page proposal within 48 hours. Fixed price, clear deliverable, clear timeline. You can say yes or no without a follow-up meeting.</span>
+          </p>
+        </div>
       </div>
-      <div class="step-card">
-        <span class="step-number">04</span>
-        <h3 class="step-title">
-          <span class="nl">Ondersteunen</span>
-          <span class="en">Support</span>
-        </h3>
-        <p class="step-body">
-          <span class="nl">Na oplevering heb je 30 dagen gratis async support. Daarna kun je kiezen voor een betaalbare maandelijkse retainer of project per project.</span>
-          <span class="en">After delivery, you have 30 days of free async support. After that, you can join a low-cost monthly retainer or reach out project by project.</span>
-        </p>
+      <!-- 03 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+          <span class="timeline-step-num">03</span>
+        </div>
+        <div class="timeline-content">
+          <h3><span class="nl">Leveren</span><span class="en">Deliver</span></h3>
+          <p>
+            <span class="nl">We komen langs en doen het werk — training op locatie, gebouwde automatisering, geïmplementeerde tool. We geven je geen PDF en verdwijnen niet.</span>
+            <span class="en">We show up and do the work — on-site training, built automation, deployed tool. We don't hand over a PDF and disappear.</span>
+          </p>
+        </div>
+      </div>
+      <!-- 04 -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+          <span class="timeline-step-num">04</span>
+        </div>
+        <div class="timeline-content">
+          <h3><span class="nl">Ondersteunen</span><span class="en">Support</span></h3>
+          <p>
+            <span class="nl">Na oplevering heb je 30 dagen gratis async support. Daarna kun je kiezen voor een betaalbare maandelijkse retainer of project per project.</span>
+            <span class="en">After delivery, you have 30 days of free async support. After that, you can join a low-cost monthly retainer or reach out project by project.</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -1615,6 +1723,45 @@
     }
   })();
   // ── END TERMINAL ────────────────────────────────────────────────────────────
+
+  // ── TIMELINE SCROLL ANIMATION ───────────────────────────────────────────────
+  (function() {
+    const container = document.getElementById('timeline-container');
+    const fill = document.getElementById('timeline-fill');
+    if (!container || !fill) return;
+
+    const items = container.querySelectorAll('.timeline-item');
+
+    function update() {
+      const rect = container.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // Fill starts when top of container reaches 15% from top of viewport
+      // Fill ends when bottom of container reaches 55% of viewport
+      const start = rect.top - vh * 0.15;
+      const end = rect.bottom - vh * 0.55;
+      const range = end - start;
+      if (range <= 0) return;
+
+      const progress = Math.max(0, Math.min(1, -start / range));
+      fill.style.height = (progress * 100) + '%';
+
+      // Activate dots as fill passes them
+      items.forEach(item => {
+        const dot = item.querySelector('.timeline-dot');
+        const dotRect = dot.getBoundingClientRect();
+        const dotCenter = dotRect.top + dotRect.height / 2;
+        if (dotCenter < vh * 0.6) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+  // ── END TIMELINE ─────────────────────────────────────────────────────────────
 </script>
 
 </body>

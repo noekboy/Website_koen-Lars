@@ -19,15 +19,18 @@
       --color-grey: #928ea3;
       --color-lightgrey: #e6e6ec;
       --color-alert: #F94200;
-      --ft-b-100: clamp(1.125rem, 1.294498vw + 0.8216rem, 2.375rem);
-      --display-font-xl: calc(var(--ft-b-100) * 3.8);
-      --display-font-l: calc(var(--ft-b-100) * 2.5);
-      --display-font-m: calc(var(--ft-b-100) * 2);
-      --display-font-s: calc(var(--ft-b-100) * 1.5);
-      --body-font-l: var(--ft-b-100);
-      --body-font-m: calc(var(--body-font-l) * 0.75);
-      --body-font-s: calc(var(--body-font-l) * 0.62);
-      --body-font-xs: calc(var(--body-font-l) * 0.56);
+      --ft-b-100: 1rem;
+      --display-font-xl: 2.75rem;
+      --display-font-l: 2rem;
+      --display-font-m: 1.5rem;
+      --display-font-s: 1.25rem;
+      --body-font-l: 1rem;
+      --body-font-m: 0.875rem;
+      --body-font-s: 0.8125rem;
+      --body-font-xs: 0.75rem;
+      --space-7xl: calc(var(--display-font-xl) * 2.5);
+      --space-6xl: calc(var(--display-font-xl) * 2);
+      --space-5xl: calc(var(--display-font-xl) * 1.5);
       --space-4xl: calc(var(--display-font-xl) * 1.2);
       --space-3xl: calc(var(--display-font-xl) * 1);
       --space-2xl: calc(var(--display-font-xl) * 0.8);
@@ -35,11 +38,12 @@
       --space-l: calc(var(--display-font-xl) * 0.4);
       --space-m: calc(var(--display-font-xl) * 0.3);
       --space-s: calc(var(--display-font-xl) * 0.1);
+      --space-xs: calc(var(--display-font-xl) * 0.04);
       --layout-padding: var(--space-l);
       --max-content-width: 1920px;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--color-white); font-family: 'Bricolage Grotesque', sans-serif; color: var(--color-black); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+    body { background: var(--color-white); font-family: 'Bricolage Grotesque', sans-serif; color: var(--color-black); -webkit-font-smoothing: antialiased; overflow-x: hidden; font-feature-settings: "ss02"; }
     .lang-en .nl { display: none !important; }
     .lang-en .en { display: inline !important; }
     .en { display: none; }
@@ -70,10 +74,10 @@
     .footer-links a:hover { color: var(--color-black); }
     @media (max-width: 768px) {
       :root {
-        --display-font-xl: 2.75rem;
-        --display-font-l: 2rem;
-        --display-font-m: 1.65rem;
-        --display-font-s: 1.3rem;
+        --display-font-xl: 2.25rem;
+        --display-font-l: 1.75rem;
+        --display-font-m: 1.375rem;
+        --display-font-s: 1.125rem;
         --layout-padding: 1.25rem;
       }
       .nav-links { display: none; }
@@ -81,10 +85,10 @@
     }
     @media (max-width: 640px) {
       :root {
-        --display-font-xl: 2.25rem;
-        --display-font-l: 1.75rem;
-        --display-font-m: 1.5rem;
-        --display-font-s: 1.2rem;
+        --display-font-xl: 1.875rem;
+        --display-font-l: 1.5rem;
+        --display-font-m: 1.25rem;
+        --display-font-s: 1rem;
         --layout-padding: 1rem;
       }
       .nav-right { gap: 0.5rem; }
