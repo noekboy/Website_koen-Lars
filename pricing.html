@@ -59,6 +59,14 @@
     .lang-btn:hover { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
     .btn-primary { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.6rem 1.4rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; white-space: nowrap; }
     .btn-primary:hover { background: var(--color-blue); }
+    .btn-card { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; align-self: flex-start; margin-top: auto; }
+    .btn-card:hover { background: var(--color-blue); }
+    .btn-card-blue { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-blue); color: var(--color-white); border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s, transform 0.15s; align-self: flex-start; margin-top: auto; }
+    .btn-card-blue:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-green-outline { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: transparent; color: var(--color-green); border: 1px solid var(--color-green); border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s, color 0.2s; margin-top: var(--space-m); }
+    .btn-green-outline:hover { background: var(--color-green); color: var(--color-black); }
+    .btn-white { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: var(--color-white); color: var(--color-blue); border: none; border-radius: 100px; padding: 1rem 2.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; transition: background 0.2s, color 0.2s, transform 0.15s; }
+    .btn-white:hover { background: var(--color-black); color: var(--color-white); transform: translateY(-2px); }
     .section-tag { font-size: var(--body-font-xs); font-weight: 500; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
     .pricing-card { background: var(--color-white); border: 1px solid var(--color-lightgrey); border-radius: 20px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.2s; /* scope card-internal font sizes to fixed values so they don't blow up at wide viewports */ --display-font-s: 1.2rem; --display-font-m: 1.75rem; }
     .pricing-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px -8px rgba(0, 77, 206, 0.15); border-color: var(--color-blue); }
@@ -194,7 +202,7 @@
             <span class="en">Monthly support</span>
           </div>
         </div>
-        <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: white; border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; align-self: flex-start; margin-top: auto;">
+        <a href="contact.html" class="btn-card">
           <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
         </a>
       </div>
@@ -238,7 +246,7 @@
             <span class="en">Fully documented</span>
           </div>
         </div>
-        <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-blue); color: white; border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s; align-self: flex-start; margin-top: auto;">
+        <a href="contact.html" class="btn-card-blue">
           <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
         </a>
       </div>
@@ -277,7 +285,7 @@
             <span class="en">Local deployment</span>
           </div>
         </div>
-        <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: white; border: none; border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; align-self: flex-start; margin-top: auto;">
+        <a href="contact.html" class="btn-card">
           <span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →
         </a>
       </div>
@@ -305,7 +313,7 @@
         <span class="nl">Na elk project kun je kiezen voor maandelijkse ondersteuning. Geen lock-in — je betaalt alleen voor de maanden dat je het nodig hebt.</span>
         <span class="en">After every project you can opt into monthly support. No lock-in — you only pay for the months you need it.</span>
       </p>
-      <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: transparent; color: var(--color-green); border: 1px solid var(--color-green); border-radius: 100px; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s; margin-top: var(--space-m);">
+      <a href="contact.html" class="btn-green-outline">
         <span class="nl">Meer informatie</span><span class="en">Learn more</span> →
       </a>
     </div>
@@ -384,7 +392,7 @@
         <span class="en">Book a free 30-minute call. No obligations, no jargon.</span>
       </p>
     </div>
-    <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: white; color: var(--color-blue); border: none; border-radius: 100px; padding: 1rem 2.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; transition: all 0.2s;">
+    <a href="contact.html" class="btn-white">
       <span class="nl">Plan een gratis gesprek</span>
       <span class="en">Book a free call</span> →
     </a>

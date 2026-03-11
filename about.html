@@ -59,6 +59,8 @@
     .lang-btn:hover { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
     .btn-primary { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-m); font-weight: 500; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.6rem 1.4rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; white-space: nowrap; }
     .btn-primary:hover { background: var(--color-blue); }
+    .btn-white { font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: var(--color-white); color: var(--color-blue); border: none; border-radius: 100px; padding: 1rem 2.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; transition: background 0.2s, color 0.2s, transform 0.15s; }
+    .btn-white:hover { background: var(--color-black); color: var(--color-white); transform: translateY(-2px); }
     .section-tag { font-size: var(--body-font-xs); font-weight: 500; color: var(--color-grey); text-transform: uppercase; letter-spacing: 0.12em; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
     footer { border-top: 1px solid var(--color-lightgrey); padding: var(--space-l) var(--layout-padding); }
     .footer-inner { max-width: var(--max-content-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
@@ -246,7 +248,7 @@
         <span class="en">Free 30-minute call. No obligations.</span>
       </p>
     </div>
-    <a href="contact.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: var(--body-font-l); font-weight: 600; background: white; color: var(--color-blue); border: none; border-radius: 100px; padding: 1rem 2.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; transition: all 0.2s;">
+    <a href="contact.html" class="btn-white">
       <span class="nl">Plan een gesprek</span>
       <span class="en">Book a call</span> →
     </a>
