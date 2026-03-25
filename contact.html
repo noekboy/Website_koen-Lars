@@ -145,6 +145,19 @@
       .btn-primary { padding: 0.5rem 1rem; }
       .form-row { grid-template-columns: 1fr !important; }
     }
+    /* Hamburger menu */
+    .nav-burger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--color-black); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--color-white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; padding: 2rem; }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; width: 100%; }
+    .nav-mobile-menu ul a { font-size: clamp(1.5rem, 6vw, 2.5rem); font-weight: 600; color: var(--color-black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-mobile-menu ul a:hover, .nav-mobile-menu ul a.active { color: var(--color-blue); }
+    .mobile-menu-cta { margin-top: 1rem; }
+    @media (max-width: 768px) { .nav-burger { display: flex !important; } .nav-right .btn-primary { display: none; } }
   </style>
   <style>
     /* Wave text effect */
@@ -169,6 +182,7 @@
       <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
       <li><a href="contact.html" class="active"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
     </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav-right">
       <button class="lang-btn" id="lang-toggle">EN</button>
       <a href="contact.html" class="btn-primary">
@@ -177,6 +191,15 @@
     </div>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <ul>
+    <li><a href="services.html"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+    <li><a href="about.html"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+    <li><a href="pricing.html"><span class="nl">Prijzen</span><span class="en">Pricing</span></a></li>
+    <li><a href="contact.html" class="active"><span class="nl">Contact</span><span class="en">Contact</span></a></li>
+  </ul>
+  <a href="contact.html" class="btn-primary mobile-menu-cta"><span class="nl">Plan een gesprek</span><span class="en">Book a call</span> →</a>
+</div>
 
 <!-- HERO -->
 <section style="padding: var(--space-3xl) var(--layout-padding) var(--space-2xl); max-width: var(--max-content-width); margin: 0 auto;">
@@ -231,7 +254,7 @@
           </span>
         </div>
       </div>
-      <a href="#" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 600; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.65rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s; align-self: flex-start;">
+      <a href="https://calendly.com/koen-v-velzen2001/30min" target="_blank" rel="noopener noreferrer" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.85rem; font-weight: 600; background: var(--color-black); color: var(--color-white); border: none; border-radius: 100px; padding: 0.65rem 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s; align-self: flex-start;">
         <span class="nl">Plan via Calendly</span>
         <span class="en">Book via Calendly</span>
         →
@@ -258,7 +281,7 @@
         <span class="nl">Bedankt! We nemen binnen 1 werkdag contact met je op.</span>
         <span class="en">Thanks! We'll get back to you within 1 working day.</span>
       </div>
-      <form id="contact-form" style="display: flex; flex-direction: column; gap: 1rem;" onsubmit="handleSubmit(event)">
+      <form id="contact-form" style="display: flex; flex-direction: column; gap: 1rem;" onsubmit="handleSubmit(event)" action="https://formspree.io/f/xqeyqpeg" method="POST">
         <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div class="form-field">
             <label for="name"><span class="nl">Naam</span><span class="en">Name</span></label>
@@ -337,11 +360,47 @@
     toggle.textContent = isEN ? 'NL' : 'EN';
   });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('success-msg').classList.add('show');
+    const form = document.getElementById('contact-form');
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('success-msg').classList.add('show');
+      } else {
+        btn.disabled = false;
+        alert('Er ging iets mis. Probeer het opnieuw of mail ons direct.');
+      }
+    } catch {
+      btn.disabled = false;
+      alert('Er ging iets mis. Controleer je internetverbinding.');
+    }
   }
+
+  // Hamburger menu
+  const burger = document.getElementById('nav-burger');
+  const mobileMenu = document.getElementById('nav-mobile-menu');
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
 </script>
 <script src="wave-text.js"></script>
 </body>
